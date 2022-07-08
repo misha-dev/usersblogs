@@ -1,0 +1,7 @@
+@import url(https://fonts.googleapis.com/css?family=Andada+Pro:regular,500,600,700,800,italic,500italic,600italic,700italic,800italic);
+@import "./styles/variables";
+
+body {
+  font-family: "Andada Pro", serif;
+  background-color: $ContentBackgroundColor;
+}

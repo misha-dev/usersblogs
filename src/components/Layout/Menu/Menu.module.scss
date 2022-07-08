@@ -1,0 +1,25 @@
+@import "../../../styles/_variables.scss";
+@import "../../../styles/templates";
+
+.menu {
+  @extend %flexCenter;
+  justify-content: space-around;
+  padding: 20px;
+  font-size: $menuFontSize;
+  font-weight: 700;
+  background-color: white;
+
+  .logout {
+    font-size: $menuButtonFontSize;
+    padding: 5px 10px 7px 10px;
+    font-weight: 600;
+    border-radius: 3px;
+    border: 2px solid $darkGreen;
+    color: $darkGreen;
+    background-color: transparent;
+    transition: border-color 0.2s linear;
+    &:hover {
+      border-color: $lightGreen;
+    }
+  }
+}
