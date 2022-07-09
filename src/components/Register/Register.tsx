@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { EmailPassName } from "./EmailPassName/EmailPassName";
 import cl from "./Register.module.scss";
+import { UserImage } from "./UserImage/UserImage";
 
 export const Register = () => {
   const registerWrapper = useRef<HTMLDivElement | null>(null);
@@ -8,9 +9,11 @@ export const Register = () => {
     <div className={cl.registerContent}>
       <div ref={registerWrapper} className={cl.registerWrapper}>
         <div className={cl.registrationBox}>
-          <EmailPassName />
+          <EmailPassName refToWrapper={registerWrapper} />
         </div>
-        <div className={cl.registrationBox}>kk</div>
+        <div className={cl.registrationBox}>
+          <UserImage />
+        </div>
       </div>
     </div>
   );

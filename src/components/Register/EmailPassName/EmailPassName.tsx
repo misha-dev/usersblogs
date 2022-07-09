@@ -1,7 +1,12 @@
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import cl from "./EmailPassName.module.scss";
 
-export const EmailPassName = () => {
+type props = {
+  refToWrapper: React.RefObject<HTMLDivElement>;
+};
+
+export const EmailPassName = ({ refToWrapper }: props) => {
+
   return (
     <>
       <div className={cl.registrationEmailPassNameWrapper}>
