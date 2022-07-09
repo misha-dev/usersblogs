@@ -4,12 +4,14 @@
   @extend %flexCenter;
   height: 100%;
   .registerWrapper {
+    border-radius: $borderRadiusDefault;
     width: $registerWrapperWidth;
-    background-color: white;
     height: $registerWrapperHeight;
     display: flex;
+    background-color: white;
 
     .registrationBox {
+      border-radius: $borderRadiusDefault;
       height: 100%;
       width: $registerBoxWidth;
       border: 1px solid green;

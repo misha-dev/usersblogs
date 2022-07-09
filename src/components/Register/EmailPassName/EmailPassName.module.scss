@@ -5,6 +5,7 @@
   height: 100%;
   flex-direction: column;
   justify-content: space-around;
+  border-radius: $borderRadiusDefault;
 
   .inputWrapper {
     position: relative;
@@ -20,6 +21,9 @@
     transform: translateY(-50%);
     cursor: text;
     transition: top 0.2s ease, font-size 0.2s ease, top 0.2s ease;
+    padding: 0 5px;
+    background-color: white;
+    user-select: none;
   }
 
   input {
@@ -39,7 +43,6 @@
     top: 0px;
     font-size: 0.8rem;
     border-color: $lightGreen;
-    padding: 0 5px;
     background-color: white;
   }
 }
