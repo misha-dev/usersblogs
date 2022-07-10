@@ -4,9 +4,11 @@ import cl from "./UserImage.module.scss";
 
 type props = {
   refToWrapper: React.RefObject<HTMLDivElement>;
+  imageFile: File;
+  setImageFile: React.Dispatch<React.SetStateAction<File>>;
 };
 
-export const UserImage = ({refToWrapper} : props) => {
+export const UserImage = ({ refToWrapper, imageFile, setImageFile }: props) => {
   // null! is for using after current without ? sign
   const refToUserImg = useRef<HTMLInputElement>(null!);
   const [htmlImageReader, setHtmlImageReader] = useState("");
@@ -14,6 +16,7 @@ export const UserImage = ({refToWrapper} : props) => {
     const file = refToUserImg.current.files![0];
 
     if (file) {
+      setImageFile(file);
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = (e) => {
