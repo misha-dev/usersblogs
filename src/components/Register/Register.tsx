@@ -12,7 +12,7 @@ export const Register = () => {
           <EmailPassName refToWrapper={registerWrapper} />
         </div>
         <div className={cl.registrationBox}>
-          <UserImage />
+          <UserImage refToWrapper={registerWrapper} />
         </div>
       </div>
     </div>
