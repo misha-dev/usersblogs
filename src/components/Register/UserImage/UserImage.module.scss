@@ -3,7 +3,8 @@
 .userImgContent {
   color: $darkGreen;
 
-  height: 100%;
+  // for positioning actionWrapper elements at the same height as slide before (5px padding of button)
+  height: calc(100% - 9px);
 
   .header {
     font-size: $bigFontSize;
@@ -45,16 +46,40 @@
     display: none;
   }
 }
-.back {
-  color: $darkGreen;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  font-weight: 700;
-  transition: color 0.2s ease-in-out;
-  margin-right: -10px;
 
-  &:hover {
-    color: $lightGreen;
+.actionWrapper {
+  @extend %flexCenter;
+  justify-content: space-between;
+
+  .back {
+    color: $darkGreen;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 700;
+    transition: color 0.2s ease-in-out;
+    margin-right: -10px;
+
+    &:hover {
+      color: $lightGreen;
+    }
+  }
+
+  .register {
+    cursor: pointer;
+    font-weight: 700;
+    padding: 7px;
+    background-color: $darkGreen;
+    font-size: $defaultFontSize;
+    border-radius: 30px;
+    color: white;
+    border: 2px solid transparent;
+    letter-spacing: 0.05rem;
+    transition: color 0.2s ease-in-out, border 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    &:hover {
+      color: $lightGreen;
+      background-color: white;
+      border-color: $darkGreen;
+    }
   }
 }

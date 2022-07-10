@@ -40,8 +40,11 @@ export const UserImage = ({ refToWrapper, imageFile, setImageFile }: props) => {
           </div>
         </label>
       </div>
-      <div className={cl.back}>
-        <MdOutlineKeyboardArrowLeft /> Back
+      <div className={cl.actionWrapper}>
+        <div className={cl.back}>
+          <MdOutlineKeyboardArrowLeft /> Back
+        </div>
+        <button className={cl.register}>Register</button>
       </div>
     </>
   );
