@@ -44,7 +44,7 @@ export const UserImageLoader = ({ refToWrapper, imageFile, setImageFile }: props
         <div className={cl.back}>
           <MdOutlineKeyboardArrowLeft /> Back
         </div>
-        <button className={cl.register}>Register</button>
+        <button className={`${cl.register} ${htmlImageReader ? "" : cl.registerDisabled}`}>Register</button>
       </div>
     </>
   );

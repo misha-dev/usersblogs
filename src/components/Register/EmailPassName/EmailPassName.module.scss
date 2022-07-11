@@ -57,8 +57,14 @@
   font-weight: 700;
   transition: color 0.2s ease-in-out;
   margin-right: -10px;
+  transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out;
 
   &:hover {
     color: $lightGreen;
   }
+}
+
+.nexPageDisabled {
+  pointer-events: none;
+  opacity: 0.5;
 }

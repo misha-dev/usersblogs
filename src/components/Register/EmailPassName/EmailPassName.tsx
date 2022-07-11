@@ -60,7 +60,7 @@ export const EmailPassName = ({ refToWrapper, email, setEmail, password, setPass
           <label htmlFor="displayName">Display Name</label>
         </div>
       </div>
-      <div className={cl.nextPage}>
+      <div className={`${cl.nextPage} ${email && password && displayName ? "" : cl.nexPageDisabled}`}>
         Next <MdOutlineKeyboardArrowRight />
       </div>
     </>

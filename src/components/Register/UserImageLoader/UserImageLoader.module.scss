@@ -75,11 +75,16 @@
     color: white;
     border: 2px solid transparent;
     letter-spacing: 0.05rem;
-    transition: color 0.2s ease-in-out, border 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out, border 0.2s ease-in-out, background-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
     &:hover {
       color: $lightGreen;
       background-color: white;
       border-color: $darkGreen;
     }
+  }
+
+  .registerDisabled {
+    pointer-events: none;
+    opacity: 0.5;
   }
 }
