@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { EmailPassName } from "./EmailPassName/EmailPassName";
 import cl from "./Register.module.scss";
-import { UserImage } from "./UserImage/UserImage";
+import { UserImageLoader } from "./UserImageLoader/UserImageLoader";
 
 export const Register = () => {
   const registerWrapper = useRef<HTMLDivElement | null>(null);
@@ -17,7 +17,7 @@ export const Register = () => {
           <EmailPassName refToWrapper={registerWrapper} email={email} password={password} displayName={displayName} setEmail={setEmail} setPassword={setPassword} setDisplayName={setDisplayName} />
         </div>
         <div className={cl.registrationBox}>
-          <UserImage refToWrapper={registerWrapper} imageFile={imageFile} setImageFile={setImageFile} />
+          <UserImageLoader refToWrapper={registerWrapper} imageFile={imageFile} setImageFile={setImageFile} />
         </div>
       </div>
     </div>

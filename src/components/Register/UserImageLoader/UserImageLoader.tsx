@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { MdOutlineKeyboardArrowLeft, MdPhotoCamera } from "react-icons/md";
-import cl from "./UserImage.module.scss";
+import cl from "./UserImageLoader.module.scss";
 
 type props = {
   refToWrapper: React.RefObject<HTMLDivElement>;
@@ -8,7 +8,7 @@ type props = {
   setImageFile: React.Dispatch<React.SetStateAction<File>>;
 };
 
-export const UserImage = ({ refToWrapper, imageFile, setImageFile }: props) => {
+export const UserImageLoader = ({ refToWrapper, imageFile, setImageFile }: props) => {
   // null! is for using after current without ? sign
   const refToUserImg = useRef<HTMLInputElement>(null!);
   const [htmlImageReader, setHtmlImageReader] = useState("");
