@@ -1,4 +1,4 @@
-@import "../../../styles/variables";
+@import "../../../styles/all";
 
 .registrationEmailPassNameWrapper {
   display: flex;
@@ -48,19 +48,22 @@
   }
 }
 
-.nextPage {
+.nextPageWrapper {
   color: $darkGreen;
-  display: flex;
-  align-items: center;
+  @extend %flexCenter;
   justify-content: end;
-  cursor: pointer;
-  font-weight: 700;
   transition: color 0.2s ease-in-out;
   margin-right: -10px;
   transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out;
 
   &:hover {
     color: $lightGreen;
+  }
+
+  .nextPage {
+    @extend %flexCenter;
+    cursor: pointer;
+    font-weight: 700;
   }
 }
 

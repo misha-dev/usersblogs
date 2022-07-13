@@ -25,8 +25,11 @@ const user = createSlice({
       state.user.email = action.payload.email;
       state.user.photoURL = action.payload.photoURL;
     },
+    logOut(state: UserState) {
+      state.user = {} as User;
+    },
   },
 });
 
 export default user.reducer;
-export const { setUser } = user.actions;
+export const { setUser, logOut } = user.actions;

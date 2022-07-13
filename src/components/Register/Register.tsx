@@ -26,28 +26,40 @@ export const Register = () => {
   };
 
   const registerUser = async () => {
-    await createUserWithEmailAndPassword(auth, email, password);
-    await uploadUserImgToStorage();
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      await uploadUserImgToStorage();
 
-    await updateProfile(auth.currentUser!, {
-      displayName,
-      photoURL: photoURL.current,
-    });
-
-    const uid = auth.currentUser!.uid;
-
-    dispatch(setUser({ uid, displayName, email, photoURL: photoURL.current }));
-    console.log(auth.currentUser);
+      await updateProfile(auth.currentUser!, {
+        displayName,
+        photoURL: photoURL.current,
+      });
+      const uid = auth.currentUser!.uid;
+      dispatch(setUser({ uid, displayName, email, photoURL: photoURL.current }));
+    } catch (error) {
+      alert("Enter valid data!");
+    }
   };
 
   return (
-    <div className={cl.registerContent}>
-      <div ref={registerWrapper} className={cl.registerWrapper}>
-        <div className={cl.registrationBox}>
-          <EmailPassName refToWrapper={registerWrapper} email={email} password={password} displayName={displayName} setEmail={setEmail} setPassword={setPassword} setDisplayName={setDisplayName} />
-        </div>
-        <div className={cl.registrationBox}>
-          <UserImageLoader refToWrapper={registerWrapper} imageFile={imageFile} setImageFile={setImageFile} register={registerUser} />
+    <div className={cl.registerContentWrapper}>
+      <div className={cl.registerContent}>
+        <div ref={registerWrapper} className={cl.registerWrapper}>
+          <div className={cl.registrationBox}>
+            <EmailPassName
+              refToWrapper={registerWrapper}
+              email={email}
+              password={password}
+              displayName={displayName}
+              setEmail={setEmail}
+              setPassword={setPassword}
+              setDisplayName={setDisplayName}
+              moveWrapper={cl.registerWrapperMoveForward}
+            />
+          </div>
+          <div className={cl.registrationBox}>
+            <UserImageLoader refToWrapper={registerWrapper} moveWrapper={cl.registerWrapperMoveForward} imageFile={imageFile} setImageFile={setImageFile} register={registerUser} />
+          </div>
         </div>
       </div>
     </div>

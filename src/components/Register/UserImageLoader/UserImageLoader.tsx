@@ -7,9 +7,10 @@ type props = {
   imageFile: File;
   setImageFile: React.Dispatch<React.SetStateAction<File>>;
   register: () => void;
+  moveWrapper: string;
 };
 
-export const UserImageLoader = ({ refToWrapper, imageFile, setImageFile, register }: props) => {
+export const UserImageLoader: React.FC<props> = ({ refToWrapper, imageFile, setImageFile, register, moveWrapper }) => {
   // null! is for using after current without ? sign
   const refToUserImg = useRef<HTMLInputElement>(null!);
   const [htmlImageReader, setHtmlImageReader] = useState("");
@@ -35,14 +36,19 @@ export const UserImageLoader = ({ refToWrapper, imageFile, setImageFile, registe
           <div className={cl.imageWrapper}>
             <img src={htmlImageReader ? htmlImageReader : require("../../../imgs/userImgPreloader.png")} alt="" className={cl.userImageSample}></img>
             <div className={cl.photoSign}>
-              <MdPhotoCamera />
+              <MdPhotoCamera style={{ marginLeft: "1px" }} />
             </div>
             <input ref={refToUserImg} onChange={uploadToHTML} type="file" />
           </div>
         </label>
       </div>
       <div className={cl.actionWrapper}>
-        <div className={cl.back}>
+        <div
+          onClick={() => {
+            refToWrapper.current?.classList.remove(moveWrapper);
+          }}
+          className={cl.back}
+        >
           <MdOutlineKeyboardArrowLeft /> Back
         </div>
         <button onClick={register} className={`${cl.register} ${htmlImageReader ? "" : cl.registerDisabled}`}>

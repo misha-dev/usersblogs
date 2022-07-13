@@ -9,9 +9,10 @@ type props = {
   setPassword: React.Dispatch<React.SetStateAction<string>>;
   displayName: string;
   setDisplayName: React.Dispatch<React.SetStateAction<string>>;
+  moveWrapper: string;
 };
 
-export const EmailPassName = ({ refToWrapper, email, setEmail, password, setPassword, displayName, setDisplayName }: props) => {
+export const EmailPassName = ({ refToWrapper, email, setEmail, password, setPassword, displayName, setDisplayName, moveWrapper }: props) => {
   return (
     <>
       <div className={cl.registrationEmailPassNameWrapper}>
@@ -60,8 +61,15 @@ export const EmailPassName = ({ refToWrapper, email, setEmail, password, setPass
           <label htmlFor="displayName">Display Name</label>
         </div>
       </div>
-      <div className={`${cl.nextPage} ${email && password && displayName ? "" : cl.nexPageDisabled}`}>
-        Next <MdOutlineKeyboardArrowRight />
+      <div className={cl.nextPageWrapper}>
+        <div
+          className={`${cl.nextPage} ${email && password && displayName ? "" : cl.nexPageDisabled}`}
+          onClick={() => {
+            refToWrapper.current?.classList.add(moveWrapper);
+          }}
+        >
+          Next <MdOutlineKeyboardArrowRight />
+        </div>
       </div>
     </>
   );
