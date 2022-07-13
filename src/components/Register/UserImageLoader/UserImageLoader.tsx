@@ -6,9 +6,10 @@ type props = {
   refToWrapper: React.RefObject<HTMLDivElement>;
   imageFile: File;
   setImageFile: React.Dispatch<React.SetStateAction<File>>;
+  register: () => void;
 };
 
-export const UserImageLoader = ({ refToWrapper, imageFile, setImageFile }: props) => {
+export const UserImageLoader = ({ refToWrapper, imageFile, setImageFile, register }: props) => {
   // null! is for using after current without ? sign
   const refToUserImg = useRef<HTMLInputElement>(null!);
   const [htmlImageReader, setHtmlImageReader] = useState("");
@@ -44,7 +45,9 @@ export const UserImageLoader = ({ refToWrapper, imageFile, setImageFile }: props
         <div className={cl.back}>
           <MdOutlineKeyboardArrowLeft /> Back
         </div>
-        <button className={`${cl.register} ${htmlImageReader ? "" : cl.registerDisabled}`}>Register</button>
+        <button onClick={register} className={`${cl.register} ${htmlImageReader ? "" : cl.registerDisabled}`}>
+          Register
+        </button>
       </div>
     </>
   );
