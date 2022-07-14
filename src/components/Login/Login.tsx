@@ -10,7 +10,23 @@ export const Login = () => {
   const dispatch = useAppDispatch();
   return (
     <div className={cl.loginContentWrapper}>
-      <form action="#">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              const { uid, email, displayName, photoURL } = userCredential.user;
+              if (displayName && email && photoURL) {
+                dispatch(setUser({ uid, email, displayName, photoURL }));
+              }
+            })
+            .catch((error) => {
+              alert("Invalid password or email");
+              setPassword("");
+            });
+        }}
+        action="#"
+      >
         <div className={cl.loginWrapper}>
           <div className={cl.loginInputs}>
             <div className="inputWrapper">
@@ -42,24 +58,7 @@ export const Login = () => {
               <label htmlFor="password">Password</label>
             </div>
           </div>
-          <button
-            onClick={() => {
-              signInWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                  const { uid, email, displayName, photoURL } = userCredential.user;
-                  if (displayName && email && photoURL) {
-                    dispatch(setUser({ uid, email, displayName, photoURL }));
-                  }
-                })
-                .catch((error) => {
-                  alert("Invalid password or email");
-                  setPassword("");
-                });
-            }}
-            className={cl.loginButton}
-          >
-            Login
-          </button>
+          <button className={cl.loginButton}>Login</button>
         </div>
       </form>
     </div>
