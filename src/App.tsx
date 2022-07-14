@@ -6,6 +6,7 @@ import "./App.scss";
 import { Authentication } from "./components/Authentication/Authentication";
 import { Blogs } from "./components/Blogs/Blogs";
 import { Layout } from "./components/Layout/Layout";
+import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
 import { auth } from "./firebase/config";
 import { useAppDispatch } from "./store/hooks";
@@ -36,7 +37,7 @@ function App() {
             <Route index element={user ? <Blogs /> : <Authentication />} />
             {user ? null : (
               <>
-                <Route path="login" element={<Authentication />} />
+                <Route path="login" element={<Login />} />
                 <Route path="register" element={<Register />} />
               </>
             )}
