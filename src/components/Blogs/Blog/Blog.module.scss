@@ -1,0 +1,51 @@
+@import "../../../styles/variables";
+.blogContentWrapper {
+  width: 700px;
+  background-color: white;
+  padding: 20px;
+  .blogUserPhotoAndDisplayName {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3px;
+
+    .userPhoto {
+      height: 20px;
+      width: 20px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    .userDisplayName {
+      font-size: 1.1rem;
+    }
+  }
+
+  .postCreatedAt {
+    font-size: 0.85rem;
+    margin-bottom: 13px;
+  }
+
+  .postImg {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 5px;
+  }
+
+  .postText {
+    line-height: 1.2rem;
+    margin-bottom: 7px;
+  }
+
+  .postLikeContent {
+    display: flex;
+    .postLike {
+      color: $darkGreen;
+      display: flex;
+      align-items: center;
+      span {
+        margin-left: 5px;
+      }
+    }
+  }
+}

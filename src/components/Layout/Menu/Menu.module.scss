@@ -10,14 +10,13 @@
 
   .wrapperActions {
     @extend %flexCenter;
-    justify-content: space-around;
     .addPost {
       font-size: $menuButtonFontSize;
       padding: 5px 10px;
       background-color: $darkGreen;
       color: white;
       border-radius: 3px;
-      margin-right: 5px;
+      margin-right: 8px;
       border: 2px solid transparent;
 
       transition: color 0.2s ease-in-out, border 0.2s ease-in-out, background-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
