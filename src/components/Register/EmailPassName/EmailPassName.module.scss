@@ -7,45 +7,7 @@
   justify-content: space-around;
   border-radius: $borderRadiusDefault;
 
-  .inputWrapper {
-    position: relative;
-  }
-
-  label {
-    display: block;
-    position: absolute;
-    font-weight: 700;
-    color: $darkGreen;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: text;
-    transition: top 0.2s ease, font-size 0.2s ease, top 0.2s ease;
-    padding: 0 5px;
-    background-color: white;
-    user-select: none;
-  }
-
-  input {
-    border: 2px solid $darkGreen;
-    border-radius: 10px;
-    padding: 12px;
-    font-size: 1.1rem;
-    color: $lightGreen;
-    width: 100%;
-
-    &[type="password"] {
-      font-family: Verdana;
-    }
-  }
-
-  input:valid + label,
-  input:focus + label {
-    top: 0px;
-    font-size: 0.8rem;
-    border-color: $lightGreen;
-    background-color: white;
-  }
+  
 }
 
 .nextPageWrapper {

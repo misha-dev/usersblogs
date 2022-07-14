@@ -16,7 +16,7 @@ export const EmailPassName = ({ refToWrapper, email, setEmail, password, setPass
   return (
     <>
       <div className={cl.registrationEmailPassNameWrapper}>
-        <div className={cl.inputWrapper}>
+        <div className="inputWrapper">
           <input
             onChange={(e) => {
               setEmail(e.currentTarget.value);
@@ -31,7 +31,7 @@ export const EmailPassName = ({ refToWrapper, email, setEmail, password, setPass
           <label htmlFor="email">Email</label>
         </div>
 
-        <div className={cl.inputWrapper}>
+        <div className="inputWrapper">
           <input
             onChange={(e) => {
               setPassword(e.currentTarget.value);
@@ -46,7 +46,7 @@ export const EmailPassName = ({ refToWrapper, email, setEmail, password, setPass
           <label htmlFor="password">Password</label>
         </div>
 
-        <div className={cl.inputWrapper}>
+        <div className="inputWrapper">
           <input
             onChange={(e) => {
               setDisplayName(e.currentTarget.value);

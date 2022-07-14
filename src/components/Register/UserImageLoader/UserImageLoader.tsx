@@ -13,7 +13,7 @@ type props = {
 export const UserImageLoader: React.FC<props> = ({ refToWrapper, imageFile, setImageFile, register, moveWrapper }) => {
   // null! is for using after current without ? sign
   const refToUserImg = useRef<HTMLInputElement>(null!);
-  const [htmlImageReader, setHtmlImageReader] = useState("");
+  const [htmlImageReader, setHtmlImageReader] = useState<string | null>(null);
   const uploadToHTML: (e: React.ChangeEvent<HTMLInputElement>) => void = (e) => {
     const file = refToUserImg.current.files![0];
 
@@ -34,7 +34,7 @@ export const UserImageLoader: React.FC<props> = ({ refToWrapper, imageFile, setI
         <div className={cl.header}>Choose profile image</div>
         <label>
           <div className={cl.imageWrapper}>
-            <img src={htmlImageReader ? htmlImageReader : require("../../../imgs/userImgPreloader.png")} alt="" className={cl.userImageSample}></img>
+            <img src={htmlImageReader ?? require("../../../imgs/userImgPreloader.png")} alt="" className={cl.userImageSample}></img>
             <div className={cl.photoSign}>
               <MdPhotoCamera style={{ marginLeft: "1px" }} />
             </div>
