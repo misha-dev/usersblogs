@@ -1,8 +1,13 @@
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
+import { auth } from "../../firebase/config";
+import { useAppDispatch } from "../../store/hooks";
+import { setUser } from "../../store/userSlice";
 import cl from "./Login.module.scss";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useAppDispatch();
   return (
     <div className={cl.loginContentWrapper}>
       <div className={cl.loginWrapper}>
@@ -36,7 +41,24 @@ export const Login = () => {
             <label htmlFor="password">Password</label>
           </div>
         </div>
-        <button className={cl.loginButton}>Login</button>
+        <button
+          onClick={() => {
+            signInWithEmailAndPassword(auth, email, password)
+              .then((userCredential) => {
+                const { uid, email, displayName, photoURL } = userCredential.user;
+                if (displayName && email && photoURL) {
+                  dispatch(setUser({ uid, email, displayName, photoURL }));
+                }
+              })
+              .catch((error) => {
+                alert("Invalid password or email");
+                setPassword("");
+              });
+          }}
+          className={cl.loginButton}
+        >
+          Login
+        </button>
       </div>
     </div>
   );
