@@ -31,7 +31,7 @@ export const Login = () => {
               autoComplete="false"
               id="password"
               required
-              type="text"
+              type="password"
             />
             <label htmlFor="password">Password</label>
           </div>
