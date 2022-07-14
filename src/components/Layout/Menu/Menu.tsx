@@ -17,16 +17,21 @@ export const Menu = () => {
           <p>Users blogs</p>
         </Link>
         {user ? (
-          <button
-            onClick={() => {
-              signOut(auth).then(() => {
-                dispatch(logOut());
-              });
-            }}
-            className={cl.logout}
-          >
-            Logout
-          </button>
+          <div className={cl.wrapperActions}>
+            <button onClick={() => {}} className={cl.addPost}>
+              ADD POST
+            </button>
+            <button
+              onClick={() => {
+                signOut(auth).then(() => {
+                  dispatch(logOut());
+                });
+              }}
+              className={cl.logout}
+            >
+              Logout
+            </button>
+          </div>
         ) : null}
       </div>
     </nav>

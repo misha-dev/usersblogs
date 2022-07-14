@@ -8,17 +8,37 @@
   font-weight: 700;
   background-color: white;
 
-  .logout {
-    font-size: $menuButtonFontSize;
-    padding: 5px 10px 7px 10px;
-    font-weight: 600;
-    border-radius: 3px;
-    border: 2px solid $darkGreen;
-    color: $darkGreen;
-    background-color: transparent;
-    transition: border-color 0.2s linear;
-    &:hover {
-      border-color: $lightGreen;
+  .wrapperActions {
+    @extend %flexCenter;
+    justify-content: space-around;
+    .addPost {
+      font-size: $menuButtonFontSize;
+      padding: 5px 10px;
+      background-color: $darkGreen;
+      color: white;
+      border-radius: 3px;
+      margin-right: 5px;
+      border: 2px solid transparent;
+
+      transition: color 0.2s ease-in-out, border 0.2s ease-in-out, background-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+      &:hover {
+        color: $lightGreen;
+        background-color: white;
+        border-color: $darkGreen;
+      }
+    }
+    .logout {
+      font-size: $menuButtonFontSize;
+      padding: 5px 10px 7px 10px;
+      font-weight: 600;
+      border-radius: 3px;
+      border: 2px solid $darkGreen;
+      color: $darkGreen;
+      background-color: transparent;
+      transition: border-color 0.2s linear;
+      &:hover {
+        border-color: $lightGreen;
+      }
     }
   }
 }
