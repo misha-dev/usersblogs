@@ -39,8 +39,8 @@
 
   .postLikeContent {
     display: flex;
+    color: $darkGreen;
     .postLike {
-      color: $darkGreen;
       display: flex;
       align-items: center;
       span {

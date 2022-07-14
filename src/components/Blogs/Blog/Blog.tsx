@@ -1,4 +1,4 @@
-import { BsHeartFill } from "react-icons/bs";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
 import cl from "./Blog.module.scss";
 export const Blog = () => {
   return (
@@ -18,7 +18,8 @@ export const Blog = () => {
 
       <div className={cl.postLikeContent}>
         <div className={cl.postLike}>
-          <BsHeartFill color="#54a3a0" fontSize="1.25rem" cursor="pointer" /> <span>0 likes</span>
+          <BsHeartFill fontSize="1.25rem" cursor="pointer" /> <span>0 likes</span>
+          <BsHeart fontSize="1.25rem" cursor="pointer" />
         </div>
       </div>
     </div>
