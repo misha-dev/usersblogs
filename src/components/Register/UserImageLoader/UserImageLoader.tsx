@@ -38,7 +38,7 @@ export const UserImageLoader: React.FC<props> = ({ refToWrapper, imageFile, setI
             <div className={cl.photoSign}>
               <MdPhotoCamera style={{ marginLeft: "1px" }} />
             </div>
-            <input ref={refToUserImg} onChange={uploadToHTML} type="file" />
+            <input ref={refToUserImg} onChange={uploadToHTML} type="file" accept="image/*" />
           </div>
         </label>
       </div>

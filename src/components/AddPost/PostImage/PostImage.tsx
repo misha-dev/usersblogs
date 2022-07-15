@@ -22,6 +22,7 @@ export const PostImage = ({ imageFile, setImageFile, htmlImageReader, setHtmlIma
       reader.onload = (e) => {
         const result = reader.result;
         setHtmlImageReader(result as string);
+
         refToPostImg.current.value = "";
       };
     }
@@ -38,7 +39,7 @@ export const PostImage = ({ imageFile, setImageFile, htmlImageReader, setHtmlIma
         </div>
       )}
 
-      <input ref={refToPostImg} onChange={uploadToHTML} type="file" />
+      <input ref={refToPostImg} onChange={uploadToHTML} type="file" accept="image/*" />
     </label>
   );
 };
