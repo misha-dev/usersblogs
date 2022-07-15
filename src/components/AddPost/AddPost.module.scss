@@ -1,62 +1,67 @@
 @import "../../styles/all";
 
-.addPostContentWrapper {
+.addPostMainWrapper {
   @extend %flexCenter;
   height: 100%;
   border: 1px solid red;
-  //   width: $addPostWidth;
+  // overflow-x: hidden;
+  .addPostContentWrapper {
+    width: $postWidth;
 
-  .addPostWrapper {
-    // width: $postWidth;
-    // border: 1px solid green
+    .addPostWrapper {
+      width: $addPostWidth;
+      display: flex;
 
-    .addPostBox {
-      padding: 20px;
-      // border: 1px solid grey;
-      background-color: white;
-
-      width: $postWidth;
-    }
-  }
-
-  .postText {
-    display: block;
-    width: 100%;
-    height: 80px;
-    resize: none;
-    border: 1px solid $lightGreen;
-    padding: 5px;
-    outline: none;
-    border-radius: 2px;
-    font-size: 1.1rem;
-    line-height: 1.3rem;
-    transition: box-shadow 0.2s linear;
-    margin-bottom: 5px;
-    &:focus {
-      box-shadow: inset 0px 0px 3px $lightGreen;
-    }
-
-    &::placeholder {
-      color: $darkGreen;
-    }
-  }
-
-  .previewWrapper {
-    display: flex;
-    justify-content: flex-end;
-    .preview {
-      cursor: pointer;
-      border-radius: $borderRadiusDefault;
-      padding: 5px;
-      background-color: $darkGreen;
-      border: 2px solid transparent;
-      color: white;
-      transition: all 0.2s ease-in-out;
-
-      &:hover {
+      .addPostBox {
+        padding: 20px;
         background-color: white;
+
+        width: $postWidth;
+      }
+      .addPostBoxPreview {
+        padding: 0;
+      }
+    }
+
+    .postText {
+      display: block;
+      width: 100%;
+      height: 80px;
+      resize: none;
+      border: 1px solid $lightGreen;
+      padding: 5px;
+      outline: none;
+      border-radius: 2px;
+      font-size: 1.1rem;
+      line-height: 1.3rem;
+      transition: box-shadow 0.2s linear;
+      margin-bottom: 5px;
+      &:focus {
+        box-shadow: inset 0px 0px 3px $lightGreen;
+      }
+
+      &::placeholder {
         color: $darkGreen;
-        border: 2px solid $darkGreen;
+      }
+    }
+
+    .previewWrapper {
+      display: flex;
+      justify-content: flex-end;
+      .preview {
+        cursor: pointer;
+        border-radius: $borderRadiusDefault;
+        padding: 5px;
+        background-color: $darkGreen;
+        border: 2px solid transparent;
+        color: white;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          background-color: white;
+          color: $darkGreen;
+          border: 2px solid $darkGreen;
+        }
       }
     }
   }
