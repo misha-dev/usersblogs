@@ -5,6 +5,7 @@
   width: 100%;
   height: $postImgHeight;
   cursor: pointer;
+  margin-bottom: 10px;
   .postImgSample {
     @extend %flexCenter;
     flex-direction: column;

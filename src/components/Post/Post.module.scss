@@ -28,13 +28,13 @@
   .postImg {
     width: 100%;
     height: $postImgHeight;
-    object-fit: cover;
+    object-fit: contain;
     margin-bottom: 5px;
   }
 
   .postText {
     line-height: 1.2rem;
-    margin-bottom: 7px;
+    margin-bottom: 9px;
   }
 
   .postLikeContent {

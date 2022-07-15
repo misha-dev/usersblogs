@@ -12,32 +12,52 @@
 
     .addPostBox {
       padding: 20px;
-      border: 1px solid grey;
+      // border: 1px solid grey;
       background-color: white;
 
       width: $postWidth;
     }
   }
 
-  .postImgContent {
+  .postText {
     display: block;
     width: 100%;
-    height: $postImgHeight;
-    cursor: pointer;
-    .postImgSample {
-      @extend %flexCenter;
-      flex-direction: column;
-      height: 100%;
-      background-color: $darkGreen;
-      color: $lightGreen;
-
-      .postImgSampleText {
-        font-weight: 600;
-      }
+    height: 80px;
+    resize: none;
+    border: 1px solid $lightGreen;
+    padding: 5px;
+    outline: none;
+    border-radius: 2px;
+    font-size: 1.1rem;
+    line-height: 1.3rem;
+    transition: box-shadow 0.2s linear;
+    margin-bottom: 5px;
+    &:focus {
+      box-shadow: inset 0px 0px 3px $lightGreen;
     }
 
-    input[type="file"] {
-      display: none;
+    &::placeholder {
+      color: $darkGreen;
+    }
+  }
+
+  .previewWrapper {
+    display: flex;
+    justify-content: flex-end;
+    .preview {
+      cursor: pointer;
+      border-radius: $borderRadiusDefault;
+      padding: 5px;
+      background-color: $darkGreen;
+      border: 2px solid transparent;
+      color: white;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background-color: white;
+        color: $darkGreen;
+        border: 2px solid $darkGreen;
+      }
     }
   }
 }
