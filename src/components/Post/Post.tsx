@@ -1,6 +1,11 @@
+import { useState } from "react";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import cl from "./Post.module.scss";
 export const Post = () => {
+  const [liked, setLiked] = useState(false);
+  const likePost = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
+    setLiked(!liked);
+  };
   return (
     <div className={cl.postContentWrapper}>
       <div className={cl.postUserPhotoAndDisplayName}>
@@ -18,8 +23,8 @@ export const Post = () => {
 
       <div className={cl.postLikeContent}>
         <div className={cl.postLike}>
-          <BsHeartFill fontSize="1.25rem" cursor="pointer" /> <span>0 likes</span>
-          <BsHeart fontSize="1.25rem" cursor="pointer" />
+          {liked ? <BsHeartFill onClick={likePost} fontSize="1.25rem" cursor="pointer" /> : <BsHeart onClick={likePost} fontSize="1.25rem" cursor="pointer" />}
+          <span>0 likes</span>
         </div>
       </div>
     </div>

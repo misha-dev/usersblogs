@@ -27,7 +27,7 @@
 
   .postImg {
     width: 100%;
-    height: 250px;
+    height: $postImgHeight;
     object-fit: cover;
     margin-bottom: 5px;
   }
