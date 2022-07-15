@@ -34,7 +34,7 @@ export const UserImageLoader: React.FC<props> = ({ refToWrapper, imageFile, setI
         <div className={cl.header}>Choose profile image</div>
         <label>
           <div className={cl.imageWrapper}>
-            <img src={htmlImageReader ?? require("../../../imgs/userImgPreloader.png")} alt="" className={cl.userImageSample}></img>
+            <img src={htmlImageReader ?? require("../../../imgs/userImgPreloader.png")} alt="" className={cl.userImage}></img>
             <div className={cl.photoSign}>
               <MdPhotoCamera style={{ marginLeft: "1px" }} />
             </div>

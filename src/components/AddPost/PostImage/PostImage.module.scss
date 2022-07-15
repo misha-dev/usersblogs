@@ -1,0 +1,28 @@
+@import "../../../styles/all";
+
+.postImgContent {
+  display: block;
+  width: 100%;
+  height: $postImgHeight;
+  cursor: pointer;
+  .postImgSample {
+    @extend %flexCenter;
+    flex-direction: column;
+    height: 100%;
+    background-color: $darkGreen;
+    color: $lightGreen;
+
+    .postImgSampleText {
+      font-weight: 600;
+    }
+  }
+
+  img {
+    height: 100%;
+    object-fit: contain;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+}

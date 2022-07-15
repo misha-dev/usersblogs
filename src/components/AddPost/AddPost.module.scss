@@ -4,10 +4,40 @@
   @extend %flexCenter;
   height: 100%;
   border: 1px solid red;
+  //   width: $addPostWidth;
 
   .addPostWrapper {
-    width: $postWidth;
-    border: 1px solid green;
-    padding: 20px;
+    // width: $postWidth;
+    // border: 1px solid green
+    background-color: white;
+
+    .addPostBox {
+      padding: 20px;
+      border: 1px solid grey;
+
+      width: $postWidth;
+    }
+  }
+
+  .postImgContent {
+    display: block;
+    width: 100%;
+    height: $postImgHeight;
+    cursor: pointer;
+    .postImgSample {
+      @extend %flexCenter;
+      flex-direction: column;
+      height: 100%;
+      background-color: $darkGreen;
+      color: $lightGreen;
+
+      .postImgSampleText {
+        font-weight: 600;
+      }
+    }
+
+    input[type="file"] {
+      display: none;
+    }
   }
 }
