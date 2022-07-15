@@ -1,9 +1,9 @@
-@import "../../../styles/variables";
-.blogContentWrapper {
-  width: 700px;
+@import "../../styles/variables";
+.postContentWrapper {
+  width: $postWidth;
   background-color: white;
   padding: 20px;
-  .blogUserPhotoAndDisplayName {
+  .postUserPhotoAndDisplayName {
     display: flex;
     align-items: center;
     margin-bottom: 3px;

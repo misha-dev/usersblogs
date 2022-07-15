@@ -1,9 +1,9 @@
 import { BsHeart, BsHeartFill } from "react-icons/bs";
-import cl from "./Blog.module.scss";
-export const Blog = () => {
+import cl from "./Post.module.scss";
+export const Post = () => {
   return (
-    <div className={cl.blogContentWrapper}>
-      <div className={cl.blogUserPhotoAndDisplayName}>
+    <div className={cl.postContentWrapper}>
+      <div className={cl.postUserPhotoAndDisplayName}>
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Check_green_icon.svg/2048px-Check_green_icon.svg.png" className={cl.userPhoto} alt="" />
         <div className={cl.userDisplayName}>Misha</div>
       </div>

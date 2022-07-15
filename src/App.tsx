@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.scss";
+import { AddPost } from "./components/AddPost/AddPost";
 import { Authentication } from "./components/Authentication/Authentication";
-import { Blogs } from "./components/Blogs/Blogs";
 import { Layout } from "./components/Layout/Layout";
 import { Login } from "./components/Login/Login";
+import { Posts } from "./components/Posts/Posts";
 import { Register } from "./components/Register/Register";
 import { auth } from "./firebase/config";
 import { useAppDispatch } from "./store/hooks";
@@ -34,8 +35,10 @@ function App() {
       {checkLogged ? (
         <Routes>
           <Route path="usersblogs" element={<Layout />}>
-            <Route index element={user ? <Blogs /> : <Authentication />} />
-            {user ? null : (
+            <Route index element={user ? <Posts /> : <Authentication />} />
+            {user ? (
+              <Route path="addpost" element={<AddPost />} />
+            ) : (
               <>
                 <Route path="login" element={<Login />} />
                 <Route path="register" element={<Register />} />

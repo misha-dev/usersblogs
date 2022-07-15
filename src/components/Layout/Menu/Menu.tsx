@@ -18,9 +18,9 @@ export const Menu = () => {
         </Link>
         {user ? (
           <div className={cl.wrapperActions}>
-            <button onClick={() => {}} className={cl.addPost}>
+            <Link to={"/usersblogs/addpost"} onClick={() => {}} className={cl.addPost}>
               ADD POST
-            </button>
+            </Link>
             <button
               onClick={() => {
                 signOut(auth).then(() => {
