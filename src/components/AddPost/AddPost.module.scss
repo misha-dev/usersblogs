@@ -4,29 +4,33 @@
   @extend %flexCenter;
   height: 100%;
   border: 1px solid red;
-  // overflow-x: hidden;
   .addPostContentWrapper {
     width: $postWidth;
+    overflow: hidden;
 
     .addPostWrapper {
       width: $addPostWidth;
       display: flex;
+      align-items: center;
+      transition: all 0.2s linear;
 
       .addPostBox {
-        padding: 20px;
-        background-color: white;
-
         width: $postWidth;
+
+        .addPostForm {
+          padding: 20px;
+          background-color: white;
+        }
       }
       .addPostBoxPreview {
-        padding: 0;
+        background-color: white;
       }
     }
 
     .postText {
       display: block;
       width: 100%;
-      height: 80px;
+      max-height: 300px;
       resize: none;
       border: 1px solid $lightGreen;
       padding: 5px;
@@ -40,29 +44,51 @@
         box-shadow: inset 0px 0px 3px $lightGreen;
       }
 
+      &::-webkit-scrollbar {
+        width: 0;
+      }
+
       &::placeholder {
         color: $darkGreen;
       }
     }
 
-    .previewWrapper {
+    .buttonAddPostWrapper {
       display: flex;
       justify-content: flex-end;
-      .preview {
-        cursor: pointer;
-        border-radius: $borderRadiusDefault;
-        padding: 5px;
-        background-color: $darkGreen;
-        border: 2px solid transparent;
-        color: white;
-        transition: all 0.2s ease-in-out;
+    }
+    .buttonAddPost {
+      cursor: pointer;
+      border-radius: $borderRadiusDefault;
+      padding: 5px;
+      font-weight: 600;
+      background-color: $darkGreen;
+      border: 2px solid transparent;
+      color: white;
+      transition: all 0.2s ease-in-out;
 
-        &:hover {
-          background-color: white;
-          color: $darkGreen;
-          border: 2px solid $darkGreen;
-        }
+      &:hover {
+        background-color: white;
+        color: $darkGreen;
+        border: 2px solid $darkGreen;
       }
+    }
+    .buttonAddPostDisabled {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    .buttonPreviewWrapper {
+      margin: 0 10px 10px 10px;
+      letter-spacing: "0.125rem";
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .previewSlide {
+      transform: translateX(-$postWidth);
     }
   }
 }
