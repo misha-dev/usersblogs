@@ -22,7 +22,8 @@ export const AddPost = () => {
                 ref={refTextArea}
                 onKeyUp={(e) => {
                   refTextArea.current.style.height = "auto";
-                  const scHeight = e.currentTarget.scrollHeight;
+                  // +2 to include borders of textArea
+                  const scHeight = e.currentTarget.scrollHeight + 2;
                   refTextArea.current.style.height = `${scHeight}px`;
                 }}
                 autoComplete="off"
