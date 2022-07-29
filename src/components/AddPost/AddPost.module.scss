@@ -58,6 +58,7 @@
       justify-content: flex-end;
     }
     .buttonAddPost {
+      font-size: $defaultFontSize;
       cursor: pointer;
       border-radius: $borderRadiusDefault;
       padding: 5px;

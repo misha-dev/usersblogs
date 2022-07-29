@@ -1,4 +1,8 @@
+import { addDoc, FieldValue, serverTimestamp } from "firebase/firestore";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useRef, useState } from "react";
+import { v4 } from "uuid";
+import { colPostsRef, storage } from "../../firebase/config";
 import { useAppSelector } from "../../store/hooks";
 import { Post } from "../Post/Post";
 import cl from "./AddPost.module.scss";
@@ -11,6 +15,27 @@ export const AddPost = () => {
   const user = useAppSelector((state) => state.user.user);
   const refAddPostWrapper = useRef<HTMLDivElement>(null!);
   const refTextArea = useRef<HTMLTextAreaElement>(null!);
+  const photoURL = useRef<string>(null!);
+
+  interface Post {
+    uid: string;
+    text: string;
+    photoURL: string;
+    likes: Array<string>;
+    createdAt: FieldValue;
+  }
+
+  const uploadPostImgToStorage = async () => {
+    const storageImgRef = ref(storage, `/PostsImgs/${v4()}`);
+    const response = await uploadBytes(storageImgRef, imageFile);
+    const imgUrl = await getDownloadURL(response.ref);
+    photoURL.current = imgUrl;
+  };
+
+  const createPost = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    await uploadPostImgToStorage();
+    await addDoc(colPostsRef, { uid: user.uid, text: postText, photoURL: photoURL.current, likes: new Array<string>(), createdAt: serverTimestamp() } as Post);
+  };
   return (
     <div className={cl.addPostMainWrapper}>
       <div className={cl.addPostContentWrapper}>
@@ -56,7 +81,7 @@ export const AddPost = () => {
               createdAt={"15/02/2022"}
               displayName={user.displayName}
               isPreview={true}
-              likes={[]}
+              likes={new Array<string>()}
               text={postText}
             />
             <div className={cl.buttonPreviewWrapper}>
@@ -68,7 +93,9 @@ export const AddPost = () => {
               >
                 Back
               </div>
-              <div className={cl.buttonAddPost}>POST</div>
+              <button onClick={createPost} className={cl.buttonAddPost}>
+                POST
+              </button>
             </div>
           </div>
         </div>
