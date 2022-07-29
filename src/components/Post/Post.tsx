@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase/firestore";
 import { useState } from "react";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import cl from "./Post.module.scss";
@@ -6,7 +7,7 @@ interface props {
   uid: string;
   id: string;
   displayName: string;
-  createdAt: string;
+  createdAt: Timestamp;
   UserPhotoURL: string;
   PostImageURL: string;
   text: string;
@@ -25,7 +26,7 @@ export const Post = ({ id, displayName, createdAt, UserPhotoURL, PostImageURL, t
         <div className={cl.userDisplayName}>{displayName}</div>
       </div>
 
-      <div className={cl.postCreatedAt}>Created at {createdAt}</div>
+      <div className={cl.postCreatedAt}>Created at {createdAt.toDate().toLocaleString("en-AU").split(",")[0]}</div>
       <img src={PostImageURL} className={cl.postImg} alt="" />
 
       <div className={cl.postText}>{text}</div>

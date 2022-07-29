@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase/firestore";
 import { Post } from "../Post/Post";
 import cl from "./Posts.module.scss";
 
@@ -8,7 +9,7 @@ export const Posts = () => {
         uid={"d"}
         id={"d"}
         displayName={"Misha"}
-        createdAt={"15/04/2022"}
+        createdAt={Timestamp.now()}
         UserPhotoURL={"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Check_green_icon.svg/2048px-Check_green_icon.svg.png"}
         PostImageURL={"https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt48f811476e162ed0/620c15764ae5ae6845c6b0c9/LOL_Homepage_Modal_(1680x650)_(1).jpg"}
         text={
