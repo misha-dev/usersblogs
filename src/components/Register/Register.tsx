@@ -19,6 +19,11 @@ export const Register = () => {
   const photoURL = useRef("");
   const dispatch = useAppDispatch();
 
+  interface User {
+    displayName: string;
+    photoURL: string;
+  }
+
   const uploadUserImgToStorage = async () => {
     const storageImgRef = ref(storage, `/userProfileImgs/${v4()}`);
     const response = await uploadBytes(storageImgRef, imageFile);
@@ -35,11 +40,10 @@ export const Register = () => {
         displayName,
         photoURL: photoURL.current,
       });
-      const uid = auth.currentUser!.uid;
 
-      await addDoc(colUsersRef, { uid, displayName, photoURL: photoURL.current });
+      const docRef = await addDoc(colUsersRef, { email, displayName, photoURL: photoURL.current } as User);
 
-      dispatch(setUser({ uid, displayName, email, photoURL: photoURL.current }));
+      dispatch(setUser({ uid: docRef.id, displayName, email, photoURL: photoURL.current }));
     } catch (error) {
       alert("Enter valid data!");
     }

@@ -1,4 +1,4 @@
-import { addDoc, serverTimestamp, Timestamp } from "firebase/firestore";
+import { addDoc, Timestamp } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useRef, useState } from "react";
 import { v4 } from "uuid";
@@ -19,8 +19,10 @@ export const AddPost = () => {
 
   interface Post {
     uid: string;
+    userName: string;
     text: string;
-    photoURL: string;
+    userPhotoURL: string;
+    postPhotoURL: string;
     likes: Array<string>;
     createdAt: Timestamp;
   }
@@ -34,7 +36,15 @@ export const AddPost = () => {
 
   const createPost = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     await uploadPostImgToStorage();
-    await addDoc(colPostsRef, { uid: user.uid, text: postText, photoURL: photoURL.current, likes: new Array<string>(), createdAt: Timestamp.now() } as Post);
+    await addDoc(colPostsRef, {
+      uid: user.uid,
+      userName: user.displayName,
+      userPhotoURL: user.photoURL,
+      postPhotoURL: photoURL.current,
+      createdAt: Timestamp.now(),
+      text: postText,
+      likes: new Array<string>(),
+    } as Post);
   };
   return (
     <div className={cl.addPostMainWrapper}>
