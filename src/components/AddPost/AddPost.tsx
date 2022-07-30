@@ -1,6 +1,7 @@
 import { addDoc, Timestamp } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
 import { colPostsRef, storage } from "../../firebase/config";
 import PostInterface from "../../interfaces/PostInterface";
@@ -17,6 +18,7 @@ export const AddPost = () => {
   const refAddPostWrapper = useRef<HTMLDivElement>(null!);
   const refTextArea = useRef<HTMLTextAreaElement>(null!);
   const photoURL = useRef<string>(null!);
+  const navigate = useNavigate();
 
   const uploadPostImgToStorage = async () => {
     const storageImgRef = ref(storage, `/PostsImgs/${v4()}`);
@@ -26,6 +28,9 @@ export const AddPost = () => {
   };
 
   const createPost = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    setTimeout(() => {
+      navigate("/usersblogs", { replace: true });
+    }, 1000);
     await uploadPostImgToStorage();
     await addDoc(colPostsRef, {
       uid: user.uid,

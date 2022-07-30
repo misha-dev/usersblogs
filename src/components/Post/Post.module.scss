@@ -3,6 +3,11 @@
   width: $postWidth;
   background-color: white;
   padding: 20px;
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
   .postUserPhotoAndDisplayName {
     display: flex;
     align-items: center;

@@ -7,7 +7,7 @@ import { Post } from "../Post/Post";
 import cl from "./Posts.module.scss";
 
 export const Posts = () => {
-  const [data, loading, error] = useCollection(query(colPostsRef, orderBy("createdAt")));
+  const [data, loading, error] = useCollection(query(colPostsRef, orderBy("createdAt", "desc")));
   return (
     <div className={cl.contentWrapper}>
       {error && <p>{error.message}</p>}
