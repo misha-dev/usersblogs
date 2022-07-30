@@ -3,7 +3,6 @@
 .addPostMainWrapper {
   @extend %flexCenter;
   height: 100%;
-  border: 1px solid red;
   .addPostContentWrapper {
     width: $postWidth;
     overflow: hidden;

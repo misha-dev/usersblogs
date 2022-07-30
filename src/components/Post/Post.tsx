@@ -5,7 +5,6 @@ import cl from "./Post.module.scss";
 
 interface props {
   uid: string;
-  id: string;
   displayName: string;
   createdAt: Timestamp;
   UserPhotoURL: string;
@@ -14,7 +13,7 @@ interface props {
   likes: Array<string>;
   isPreview: boolean;
 }
-export const Post = ({ id, displayName, createdAt, UserPhotoURL, PostImageURL, text, likes, isPreview }: props) => {
+export const Post = ({ displayName, createdAt, UserPhotoURL, PostImageURL, text, likes, isPreview }: props) => {
   const [liked, setLiked] = useState(false);
   const likePost = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
     setLiked(!liked);

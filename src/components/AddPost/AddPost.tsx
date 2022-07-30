@@ -3,6 +3,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useRef, useState } from "react";
 import { v4 } from "uuid";
 import { colPostsRef, storage } from "../../firebase/config";
+import PostInterface from "../../interfaces/PostInterface";
 import { useAppSelector } from "../../store/hooks";
 import { Post } from "../Post/Post";
 import cl from "./AddPost.module.scss";
@@ -16,16 +17,6 @@ export const AddPost = () => {
   const refAddPostWrapper = useRef<HTMLDivElement>(null!);
   const refTextArea = useRef<HTMLTextAreaElement>(null!);
   const photoURL = useRef<string>(null!);
-
-  interface Post {
-    uid: string;
-    userName: string;
-    text: string;
-    userPhotoURL: string;
-    postPhotoURL: string;
-    likes: Array<string>;
-    createdAt: Timestamp;
-  }
 
   const uploadPostImgToStorage = async () => {
     const storageImgRef = ref(storage, `/PostsImgs/${v4()}`);
@@ -44,7 +35,7 @@ export const AddPost = () => {
       createdAt: Timestamp.now(),
       text: postText,
       likes: new Array<string>(),
-    } as Post);
+    } as PostInterface);
   };
   return (
     <div className={cl.addPostMainWrapper}>
@@ -85,7 +76,6 @@ export const AddPost = () => {
           <div className={`${cl.addPostBox} ${cl.addPostBoxPreview}`}>
             <Post
               uid={user.uid}
-              id="1"
               PostImageURL={htmlImageReader}
               UserPhotoURL={user.photoURL}
               createdAt={Timestamp.now()}

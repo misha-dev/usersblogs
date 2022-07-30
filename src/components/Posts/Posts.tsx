@@ -1,23 +1,23 @@
-import { Timestamp } from "firebase/firestore";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { colPostsRef } from "../../firebase/config";
+import PostInterface from "../../interfaces/PostInterface";
 import { Post } from "../Post/Post";
 import cl from "./Posts.module.scss";
 
 export const Posts = () => {
+  const [data, loading, error] = useCollection(colPostsRef);
   return (
     <div className={cl.contentWrapper}>
-      <Post
-        uid={"d"}
-        id={"d"}
-        displayName={"Misha"}
-        createdAt={Timestamp.now()}
-        UserPhotoURL={"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Check_green_icon.svg/2048px-Check_green_icon.svg.png"}
-        PostImageURL={"https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt48f811476e162ed0/620c15764ae5ae6845c6b0c9/LOL_Homepage_Modal_(1680x650)_(1).jpg"}
-        text={
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi numquam accusamus dignissimos. Iste voluptatum asperiores a, veritatis quidem at ipsum eius delectus perspiciatis ut ipsa? repudiandae Fuga asperiores tempore vitae!"
-        }
-        likes={["d"]}
-        isPreview={false}
-      />
+      {error && <p>{error.message}</p>}
+      {loading ? (
+        <p>Loading</p>
+      ) : (
+        data &&
+        data.docs.map((doc) => {
+          const { uid, userName, userPhotoURL, createdAt, postPhotoURL, text, likes } = doc.data() as PostInterface;
+          return <Post key={doc.id} uid={uid} displayName={userName} createdAt={createdAt} UserPhotoURL={userPhotoURL} PostImageURL={postPhotoURL} text={text} likes={likes} isPreview={false} />;
+        })
+      )}
     </div>
   );
 };
