@@ -1,16 +1,18 @@
+import { orderBy, query } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { colPostsRef } from "../../firebase/config";
 import PostInterface from "../../interfaces/PostInterface";
+import { LoaderHollowCircle } from "../../Loaders/LoaderHollowCircle/LoaderHollowCircle";
 import { Post } from "../Post/Post";
 import cl from "./Posts.module.scss";
 
 export const Posts = () => {
-  const [data, loading, error] = useCollection(colPostsRef);
+  const [data, loading, error] = useCollection(query(colPostsRef, orderBy("createdAt")));
   return (
     <div className={cl.contentWrapper}>
       {error && <p>{error.message}</p>}
       {loading ? (
-        <p>Loading</p>
+        <LoaderHollowCircle />
       ) : (
         data &&
         data.docs.map((doc) => {
