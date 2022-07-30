@@ -11,8 +11,8 @@ export const Menu = () => {
 
   const dispatch = useAppDispatch();
   return (
-    <nav>
-      <div className={cl.menu}>
+    <nav style={{ height: "73.59px" }}>
+      <div style={{ width: "100%" }} className={cl.menu}>
         <Link to={"/usersblogs"}>
           <p>Users blogs</p>
         </Link>

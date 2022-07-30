@@ -7,6 +7,9 @@
   font-size: $menuFontSize;
   font-weight: 700;
   background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
 
   .wrapperActions {
     @extend %flexCenter;
