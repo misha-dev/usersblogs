@@ -1,6 +1,7 @@
 @import "../../../styles/all";
 
 .menu {
+  transition: background-color 0.2s ease;
   @extend %flexCenter;
   justify-content: space-around;
   padding: 20px;
@@ -42,6 +43,21 @@
       &:hover {
         border-color: $lightGreen;
       }
+    }
+  }
+}
+
+.coloredMenu {
+  background-color: #f5f9f5;
+  animation: moveMenu 0.3s;
+
+  @keyframes moveMenu {
+    0% {
+      top: -100px;
+    }
+
+    100% {
+      top: 0px;
     }
   }
 }
