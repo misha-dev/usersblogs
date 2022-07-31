@@ -1,0 +1,39 @@
+@import "../../styles/all";
+
+.selectPostsWrapper {
+  @extend %flexCenter;
+  margin-top: 10px;
+  .selectPostsContent {
+    @extend %flexCenter;
+    justify-content: space-around;
+    width: $postWidth;
+    padding: 7px;
+    border-radius: 35px;
+    background-color: white;
+
+    input[type="radio"] {
+      display: none;
+      &:checked + .selectPostsItem {
+        border: 1px solid transparent;
+        background-color: $darkGreen;
+        color: white;
+      }
+    }
+
+    .selectPostsItem {
+      padding: 5px 8px;
+      border: 2px solid;
+      background-color: white;
+      border: 1px solid $lightGreen;
+      cursor: pointer;
+      border-radius: 35px;
+      transition: all 0.2s ease-in-out;
+      user-select: none;
+      &:hover {
+        border: 1px solid $lightGreen;
+        background-color: $darkGreen;
+        color: white;
+      }
+    }
+  }
+}
