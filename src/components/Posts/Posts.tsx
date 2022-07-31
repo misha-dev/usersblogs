@@ -17,7 +17,9 @@ export const Posts = () => {
         data &&
         data.docs.map((doc) => {
           const { uid, userName, userPhotoURL, createdAt, postPhotoURL, text, likes } = doc.data() as PostInterface;
-          return <Post key={doc.id} uid={uid} displayName={userName} createdAt={createdAt} UserPhotoURL={userPhotoURL} PostImageURL={postPhotoURL} text={text} likes={likes} isPreview={false} />;
+          return (
+            <Post key={doc.id} id={doc.id} uid={uid} userName={userName} createdAt={createdAt} userPhotoURL={userPhotoURL} postPhotoURL={postPhotoURL} text={text} likes={likes} isPreview={false} />
+          );
         })
       )}
     </div>

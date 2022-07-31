@@ -81,10 +81,11 @@ export const AddPost = () => {
           <div className={`${cl.addPostBox} ${cl.addPostBoxPreview}`}>
             <Post
               uid={user.uid}
-              PostImageURL={htmlImageReader}
-              UserPhotoURL={user.photoURL}
+              id={"sample"}
+              postPhotoURL={htmlImageReader}
+              userPhotoURL={user.photoURL}
               createdAt={Timestamp.now()}
-              displayName={user.displayName}
+              userName={user.displayName}
               isPreview={true}
               likes={new Array<string>()}
               text={postText}
