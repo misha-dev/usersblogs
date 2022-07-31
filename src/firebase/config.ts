@@ -19,7 +19,7 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
 
 // firestore
-const db = getFirestore();
+export const db = getFirestore();
 
 // collections
 export const colUsersRef = collection(db, "users");
