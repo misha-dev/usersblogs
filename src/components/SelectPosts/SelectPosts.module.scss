@@ -2,14 +2,30 @@
 
 .selectPostsWrapper {
   @extend %flexCenter;
-  margin-top: 10px;
+  margin-bottom: 20px;
   .selectPostsContent {
     @extend %flexCenter;
-    justify-content: space-around;
+    justify-content: flex-start;
     width: $postWidth;
-    padding: 7px;
+    padding: 7px 10px;
     border-radius: 35px;
     background-color: white;
+    min-height: 42px;
+
+    .loader {
+      width: 100%;
+      text-align: center;
+    }
+
+    // horizontal scroll
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: 10px;
+
+    &::-webkit-scrollbar {
+      // display: none;
+    }
 
     input[type="radio"] {
       display: none;
@@ -20,19 +36,26 @@
       }
     }
 
-    .selectPostsItem {
-      padding: 5px 8px;
-      border: 2px solid;
-      background-color: white;
-      border: 1px solid $lightGreen;
-      cursor: pointer;
-      border-radius: 35px;
-      transition: all 0.2s ease-in-out;
-      user-select: none;
-      &:hover {
+    label {
+      scroll-snap-align: start;
+      margin-right: 7px;
+      &:last-child {
+        margin-right: 0px;
+      }
+      .selectPostsItem {
+        padding: 5px 8px;
+        border: 2px solid;
+        background-color: white;
         border: 1px solid $lightGreen;
-        background-color: $darkGreen;
-        color: white;
+        cursor: pointer;
+        border-radius: 35px;
+        transition: all 0.2s ease-in-out;
+        user-select: none;
+        &:hover {
+          border: 1px solid $lightGreen;
+          background-color: $darkGreen;
+          color: white;
+        }
       }
     }
   }

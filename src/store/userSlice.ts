@@ -5,10 +5,14 @@ type User = {
   displayName: string;
   email: string;
   photoURL: string;
+  selectedPosts?: string;
 };
 
 type UserState = {
   user: User;
+};
+type SelectedPosts = {
+  selectedPosts: string;
 };
 
 const initialState: UserState = {
@@ -24,12 +28,17 @@ const user = createSlice({
       state.user.displayName = action.payload.displayName;
       state.user.email = action.payload.email;
       state.user.photoURL = action.payload.photoURL;
+      state.user.selectedPosts = "all";
     },
     logOut(state: UserState) {
       state.user = {} as User;
+    },
+
+    selectPosts(state: UserState, action: PayloadAction<SelectedPosts>) {
+      state.user.selectedPosts = action.payload.selectedPosts;
     },
   },
 });
 
 export default user.reducer;
-export const { setUser, logOut } = user.actions;
+export const { setUser, logOut, selectPosts } = user.actions;

@@ -7,7 +7,7 @@ import { AddPost } from "./components/AddPost/AddPost";
 import { Authentication } from "./components/Authentication/Authentication";
 import { Layout } from "./components/Layout/Layout";
 import { Login } from "./components/Login/Login";
-import { Posts } from "./components/Posts/Posts";
+import { PostsWithSelect } from "./components/PostsWithSelect/PostsWithSelect";
 import { Register } from "./components/Register/Register";
 import { auth } from "./firebase/config";
 import { useAppDispatch } from "./store/hooks";
@@ -35,7 +35,7 @@ function App() {
       {checkLogged ? (
         <Routes>
           <Route path="usersblogs" element={<Layout />}>
-            <Route index element={user ? <Posts /> : <Authentication />} />
+            <Route index element={user ? <PostsWithSelect /> : <Authentication />} />
             {user ? (
               <Route path="addpost" element={<AddPost />} />
             ) : (

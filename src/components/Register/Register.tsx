@@ -20,6 +20,7 @@ export const Register = () => {
   const dispatch = useAppDispatch();
 
   interface User {
+    uid: string;
     displayName: string;
     photoURL: string;
   }
@@ -33,17 +34,18 @@ export const Register = () => {
 
   const registerUser = async () => {
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCred = await createUserWithEmailAndPassword(auth, email, password);
       await uploadUserImgToStorage();
 
       await updateProfile(auth.currentUser!, {
         displayName,
         photoURL: photoURL.current,
       });
+      const uid = userCred.user.uid;
 
-      const docRef = await addDoc(colUsersRef, { email, displayName, photoURL: photoURL.current } as User);
+      await addDoc(colUsersRef, { uid, email, displayName, photoURL: photoURL.current } as User);
 
-      dispatch(setUser({ uid: docRef.id, displayName, email, photoURL: photoURL.current }));
+      dispatch(setUser({ uid, displayName, email, photoURL: photoURL.current }));
     } catch (error) {
       alert("Enter valid data!");
     }
