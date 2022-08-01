@@ -1,6 +1,6 @@
 @import "../../styles/all";
 .contentWrapper {
-  height: calc(100% - 42px - 20px);
+  height: calc(100% - 42px - 17px - 20px);
   @extend %flexCenter;
   justify-content: flex-start;
   flex-direction: column;

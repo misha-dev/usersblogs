@@ -8,8 +8,14 @@ import cl from "./SelectPosts.module.scss";
 
 export const SelectPosts = () => {
   const { uid } = useAppSelector((state) => state.user.user);
+  let querySelectPosts;
+  if (uid) {
+    querySelectPosts = where("uid", "!=", uid);
+  } else {
+    querySelectPosts = where("uid", "!=", -1);
+  }
 
-  const [data, loading] = useCollection(query(colUsersRef, where("uid", "!=", uid)));
+  const [data, loading] = useCollection(query(colUsersRef, querySelectPosts));
   const { selectedPosts } = useAppSelector((state) => state.user.user);
   const dispatch = useAppDispatch();
   return (

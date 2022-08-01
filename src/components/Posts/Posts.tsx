@@ -31,29 +31,17 @@ export const Posts = () => {
       {loading ? (
         <LoaderHollowCircle />
       ) : (
-        data && (
-            data.docs
-              .sort((a, b) => {
-                return b.data().createdAt.seconds - a.data().createdAt.seconds;
-              })
-              .map((doc) => {
-                const { uid, userName, userPhotoURL, createdAt, postPhotoURL, text, likes } = doc.data() as PostInterface;
-                return (
-                  <Post
-                    key={doc.id}
-                    id={doc.id}
-                    uid={uid}
-                    userName={userName}
-                    createdAt={createdAt}
-                    userPhotoURL={userPhotoURL}
-                    postPhotoURL={postPhotoURL}
-                    text={text}
-                    likes={likes}
-                    isPreview={false}
-                  />
-                );
-              })
-        )
+        data &&
+        data.docs
+          .sort((a, b) => {
+            return b.data().createdAt.seconds - a.data().createdAt.seconds;
+          })
+          .map((doc) => {
+            const { uid, userName, userPhotoURL, createdAt, postPhotoURL, text, likes } = doc.data() as PostInterface;
+            return (
+              <Post key={doc.id} id={doc.id} uid={uid} userName={userName} createdAt={createdAt} userPhotoURL={userPhotoURL} postPhotoURL={postPhotoURL} text={text} likes={likes} isPreview={false} />
+            );
+          })
       )}
     </div>
   );
