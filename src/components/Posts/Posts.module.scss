@@ -4,4 +4,11 @@
   @extend %flexCenter;
   justify-content: flex-start;
   flex-direction: column;
+
+  .noPosts {
+    height: 100%;
+    @extend %flexCenter;
+    font-size: $bigFontSize;
+    color: $darkGreen;
+  }
 }

@@ -1,4 +1,5 @@
 import { query, where } from "firebase/firestore";
+import { useEffect, useRef } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { colUsersRef } from "../../firebase/config";
 import { UserInterface } from "../../interfaces/UserInterface";
@@ -14,14 +15,20 @@ export const SelectPosts = () => {
   } else {
     querySelectPosts = where("uid", "!=", -1);
   }
-
   const [data, loading] = useCollection(query(colUsersRef, querySelectPosts));
   const { selectedPosts } = useAppSelector((state) => state.user.user);
+  const selectPostsRef = useRef<HTMLDivElement>(null!);
+  useEffect(() => {
+    selectPostsRef.current.addEventListener("wheel", (e) => {
+      e.preventDefault();
+      selectPostsRef.current.scrollLeft += e.deltaY;
+    });
+  }, []);
   const dispatch = useAppDispatch();
   return (
     <div className={cl.selectPostsWrapper}>
-      <div className={cl.selectPostsContent}>
-        {loading && <p className={cl.loader}>Loading</p>}
+      <div ref={selectPostsRef} className={`${cl.selectPostsContent} ${cl.horizontalScroll}`}>
+        {(loading || !selectPosts) && <p className={cl.loader}>Loading</p>}
         {data && (
           <>
             <label>

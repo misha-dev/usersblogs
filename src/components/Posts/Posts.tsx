@@ -30,9 +30,10 @@ export const Posts = () => {
       {error && <p>{error.message}</p>}
       {loading ? (
         <LoaderHollowCircle />
+      ) : data && data.docs.length === 0 ? (
+        <div className={cl.noPosts}>No posts found :(</div>
       ) : (
-        data &&
-        data.docs
+        data?.docs
           .sort((a, b) => {
             return b.data().createdAt.seconds - a.data().createdAt.seconds;
           })
