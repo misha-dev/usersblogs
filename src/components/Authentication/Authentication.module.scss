@@ -32,6 +32,13 @@
       border-radius: 10px;
     }
 
+    @media (max-width: 870px) {
+      .auth_login,
+      .auth_register {
+        width: 200px;
+      }
+    }
+
     .auth_login {
       &:hover {
         box-shadow: 0px 0px 7px inset $darkGreen;

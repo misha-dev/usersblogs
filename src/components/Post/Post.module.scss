@@ -55,3 +55,9 @@
     }
   }
 }
+
+@media (max-width: 870px) {
+  .postContentWrapper {
+    width: $postWidthMobile;
+  }
+}

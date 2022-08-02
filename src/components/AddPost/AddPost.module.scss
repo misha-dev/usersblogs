@@ -26,6 +26,12 @@
       }
     }
 
+    @media (max-width: 870px) {
+      .addPostWrapper {
+        width: $addPostWidthMobile;
+      }
+    }
+
     .postText {
       display: block;
       width: 100%;
@@ -89,6 +95,17 @@
 
     .previewSlide {
       transform: translateX(-$postWidth);
+    }
+    @media (max-width: 870px) {
+      .previewSlide {
+        transform: translateX(-$postWidthMobile);
+      }
+    }
+  }
+
+  @media (max-width: 870px) {
+    .addPostContentWrapper {
+      width: $postWidthMobile;
     }
   }
 }

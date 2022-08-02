@@ -49,6 +49,12 @@
       }
     }
   }
+
+  @media (max-width: 870px) {
+  .selectPostsContent {
+    width: $postWidthMobile;
+  }
+}
 }
 
 .horizontalScroll {
