@@ -4,6 +4,7 @@
 body {
   font-family: "Andada Pro", serif;
   background-color: $ContentBackgroundColor;
+  overflow-y: scroll;
 }
 
 .inputWrapper {
