@@ -46,22 +46,22 @@ export const SelectPosts = () => {
             <label>
               <input
                 onChange={() => {
-                  dispatch(selectPosts({ selectedPosts: "liked" }));
-                }}
-                type="radio"
-                name="selectPosts"
-              />
-              <div className={cl.selectPostsItem}>Liked</div>
-            </label>
-            <label>
-              <input
-                onChange={() => {
                   dispatch(selectPosts({ selectedPosts: "my" }));
                 }}
                 type="radio"
                 name="selectPosts"
               />
               <div className={cl.selectPostsItem}>My</div>
+            </label>
+            <label>
+              <input
+                onChange={() => {
+                  dispatch(selectPosts({ selectedPosts: "liked" }));
+                }}
+                type="radio"
+                name="selectPosts"
+              />
+              <div className={cl.selectPostsItem}>Liked</div>
             </label>
             {data.docs.map((doc) => {
               const { displayName, uid } = doc.data() as UserInterface;

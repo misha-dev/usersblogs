@@ -10,6 +10,7 @@ import cl from "./Menu.module.scss";
 export const Menu = () => {
   const [user] = useAuthState(auth);
   const menuRef = useRef<HTMLDivElement>(null!);
+  const logoutButtonRef = useRef<HTMLButtonElement>(null!);
 
   const onScrollColorMenu = (e: Event) => {
     const scrolled = window.scrollY;
@@ -36,19 +37,31 @@ export const Menu = () => {
         </Link>
         {user ? (
           <div className={cl.wrapperActions}>
-            <Link to={"/usersblogs/addpost"} onClick={() => {}} className={cl.addPost}>
+            <Link to={"/usersblogs/addpost"} className={cl.addPost}>
               ADD POST
             </Link>
-            <button
-              onClick={() => {
-                signOut(auth).then(() => {
-                  dispatch(logOut());
-                });
-              }}
-              className={cl.logout}
-            >
-              Logout
-            </button>
+
+            <div className={cl.user}>
+              <img
+                src={user.photoURL!}
+                onClick={() => {
+                  const logoutClassList = logoutButtonRef.current.classList;
+                  logoutClassList.contains(cl.hideLogoutButton) ? logoutClassList.remove(cl.hideLogoutButton) : logoutClassList.add(cl.hideLogoutButton);
+                }}
+                alt=""
+              />
+              <button
+                ref={logoutButtonRef}
+                onClick={() => {
+                  signOut(auth).then(() => {
+                    dispatch(logOut());
+                  });
+                }}
+                className={`${cl.logout} ${cl.hideLogoutButton}`}
+              >
+                Logout
+              </button>
+            </div>
           </div>
         ) : null}
       </div>
