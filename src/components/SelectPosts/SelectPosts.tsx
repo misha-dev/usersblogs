@@ -53,7 +53,7 @@ export const SelectPosts = () => {
               />
               <div className={cl.selectPostsItem}>My</div>
             </label>
-            <label>
+            <label className={cl.lastOfBaseSelectors}>
               <input
                 onChange={() => {
                   dispatch(selectPosts({ selectedPosts: "liked" }));

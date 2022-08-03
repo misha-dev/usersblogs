@@ -32,6 +32,7 @@
       &:last-child {
         margin-right: 0px;
       }
+
       .selectPostsItem {
         padding: 5px 8px;
         border: 2px solid;
@@ -48,13 +49,28 @@
         }
       }
     }
+
+    .lastOfBaseSelectors {
+      position: relative;
+      margin-right: 15px;
+      &::after {
+        content: "";
+        background-color: $lightGreen;
+        position: absolute;
+        top: 0px;
+        left: 111%;
+        height: 28px;
+        // transform: translate(-50%, -50%);
+        width: 1px;
+      }
+    }
   }
 
   @media (max-width: 870px) {
-  .selectPostsContent {
-    width: $postWidthMobile;
+    .selectPostsContent {
+      width: $postWidthMobile;
+    }
   }
-}
 }
 
 .horizontalScroll {
