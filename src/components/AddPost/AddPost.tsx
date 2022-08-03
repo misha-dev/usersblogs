@@ -6,6 +6,7 @@ import { v4 } from "uuid";
 import { colPostsRef, storage } from "../../firebase/config";
 import PostInterface from "../../interfaces/PostInterface";
 import { useAppSelector } from "../../store/hooks";
+import { CustomTextArea } from "../CustomTextArea/CustomTextArea";
 import { Post } from "../Post/Post";
 import cl from "./AddPost.module.scss";
 import { PostImage } from "./PostImage/PostImage";
@@ -16,7 +17,6 @@ export const AddPost = () => {
   const [postText, setPostText] = useState("");
   const user = useAppSelector((state) => state.user.user);
   const refAddPostWrapper = useRef<HTMLDivElement>(null!);
-  const refTextArea = useRef<HTMLTextAreaElement>(null!);
   const photoURL = useRef<string>(null!);
   const navigate = useNavigate();
 
@@ -49,23 +49,8 @@ export const AddPost = () => {
           <div className={cl.addPostBox}>
             <div className={cl.addPostForm}>
               <PostImage htmlImageReader={htmlImageReader} setHtmlImageReader={setHtmlImageReader} imageFile={imageFile} setImageFile={setImageFile} />
-              <textarea
-                ref={refTextArea}
-                onKeyUp={(e) => {
-                  refTextArea.current.style.height = "auto";
-                  // +2 to include borders of textArea
-                  const scHeight = e.currentTarget.scrollHeight + 2;
-                  refTextArea.current.style.height = `${scHeight}px`;
-                }}
-                autoComplete="off"
-                autoCorrect="off"
-                value={postText}
-                onChange={(e) => {
-                  setPostText(e.currentTarget.value);
-                }}
-                className={cl.postText}
-                placeholder="Enter a text"
-              ></textarea>
+
+              <CustomTextArea text={postText} setText={setPostText} />
               <div className={cl.buttonAddPostWrapper}>
                 <div
                   className={`${cl.buttonAddPost} ${htmlImageReader && postText ? "" : cl.buttonAddPostDisabled}`}

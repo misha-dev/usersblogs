@@ -9,8 +9,7 @@
 
     .addPostWrapper {
       width: $addPostWidth;
-      display: flex;
-      align-items: center;
+      @extend %flexCenter;
       transition: all 0.2s linear;
 
       .addPostBox {
