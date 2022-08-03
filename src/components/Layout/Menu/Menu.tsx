@@ -3,12 +3,15 @@ import { useEffect, useRef } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import { auth } from "../../../firebase/config";
-import { useAppDispatch } from "../../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { logOut } from "../../../store/userSlice";
 import cl from "./Menu.module.scss";
 
 export const Menu = () => {
   const [user] = useAuthState(auth);
+  // for updating photoURL cause after register we update user with photoURL, but it that change doesn't rerender the component, so we should use here Redux Toolkit
+  const photoURL = useAppSelector((state) => state.user.user.photoURL);
+
   const menuRef = useRef<HTMLDivElement>(null!);
   const logoutButtonRef = useRef<HTMLButtonElement>(null!);
 
@@ -43,7 +46,7 @@ export const Menu = () => {
 
             <div className={cl.user}>
               <img
-                src={user.photoURL!}
+                src={photoURL}
                 onClick={() => {
                   const logoutClassList = logoutButtonRef.current.classList;
                   logoutClassList.contains(cl.hideLogoutButton) ? logoutClassList.remove(cl.hideLogoutButton) : logoutClassList.add(cl.hideLogoutButton);
