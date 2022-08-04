@@ -1,13 +1,29 @@
-import { useState } from "react";
-import { CustomTextArea } from "../CustomTextArea/CustomTextArea";
+import { DocumentData, QuerySnapshot } from "firebase/firestore";
+import { CommentInterface } from "../../interfaces/CommentInterface";
 import { Comment } from "./Comment/Comment";
 import cl from "./Comments.module.scss";
 
-export const Comments = () => {
+interface CommentsProps {
+  comments: QuerySnapshot<DocumentData>;
+}
 
+export const Comments = ({ comments }: CommentsProps) => {
   return (
-    <div className={cl.commentsWrapper}>
-      <Comment />
-    </div>
+    <>
+      {comments.docs
+        .sort((a, b) => {
+          return a.data().createdAt.seconds - b.data().createdAt.seconds;
+        })
+        .map((doc) => {
+          const { userName, photoURL, createdAt, text, postId } = doc.data() as CommentInterface;
+          console.log(doc.id);
+
+          return (
+            <div className={cl.commentsWrapper}>
+              <Comment key={doc.id} postId={postId} createdAt={createdAt} photoURL={photoURL} text={text} userName={userName} />
+            </div>
+          );
+        })}
+    </>
   );
 };

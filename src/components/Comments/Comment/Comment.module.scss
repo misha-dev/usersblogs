@@ -1,5 +1,46 @@
+@import "../../../styles/all";
+
 .commentWrapper {
-  min-height: 50px;
+  width: calc($postWidth - 50px);
+  min-height: 40px;
   margin-bottom: 8px;
   background-color: white;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+
+  .commentInfo {
+    @extend %flexCenter;
+    flex-direction: column;
+    .commentUserInfo {
+      @extend %flexCenter;
+      margin-bottom: 3px;
+      img {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+      }
+    }
+
+    .userName {
+      font-size: 0.9rem;
+      margin-left: 5px;
+    }
+  }
+
+  .commentCreatedAt {
+    font-size: 0.7rem;
+    // padding-left: 5px;
+  }
+
+  .commentText {
+    font-size: 1.03rem;
+    margin-left: 15px;
+  }
+}
+
+@media (max-width: 870px) {
+  .commentWrapper {
+    width: calc($postWidthMobile - 50px);
+  }
 }

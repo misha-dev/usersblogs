@@ -24,17 +24,17 @@ export const Posts = () => {
       queryPosts = where("uid", "==", selectedPosts);
     }
   }
-  const [data, loading, error] = useCollection(query(colPostsRef, queryPosts as QueryConstraint));
+  const [posts, loading, error] = useCollection(query(colPostsRef, queryPosts as QueryConstraint));
 
   return (
     <div className={cl.contentWrapper}>
       {error && <p>{error.message}</p>}
       {loading ? (
         <LoaderHollowCircle />
-      ) : data && data.docs.length === 0 ? (
+      ) : posts && posts.docs.length === 0 ? (
         <div className={cl.noPosts}>No posts found :(</div>
       ) : (
-        data?.docs
+        posts?.docs
           .sort((a, b) => {
             return b.data().createdAt.seconds - a.data().createdAt.seconds;
           })
