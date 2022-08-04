@@ -73,14 +73,14 @@ export const Post = ({ id, uid, userName, postPhotoURL, userPhotoURL, createdAt,
       </div>
       <div className="hide" ref={commentsRef}>
         {comments && <Comments comments={comments} />}
-        <div style={{marginTop: "10px"}}>
+        <div style={{ marginTop: "10px" }}>
           <CustomTextArea text={commentText} setText={setCommentText} />
         </div>
         <div className={cl.buttonSendWrapper}>
           <button
             className={`${cl.buttonSend} ${commentText === "" ? cl.buttonSendDisabled : ""}`}
-            onClick={async () => {
-              await addDoc(colCommentsRef, {
+            onClick={() => {
+              addDoc(colCommentsRef, {
                 postId: id,
                 userName,
                 photoURL: userPhotoURL,
