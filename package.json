@@ -2,7 +2,7 @@
   "name": "usersblogs",
   "version": "0.1.0",
   "private": true,
-  "homepage": "usersblogs",
+  "homepage": "https://misha-dev.github.io/usersblogs",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",
     "@testing-library/jest-dom": "^5.16.4",
