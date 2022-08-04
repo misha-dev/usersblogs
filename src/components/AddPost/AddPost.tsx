@@ -53,7 +53,7 @@ export const AddPost = () => {
               <CustomTextArea text={postText} setText={setPostText} />
               <div className={cl.buttonAddPostWrapper}>
                 <div
-                  className={`${cl.buttonAddPost} ${htmlImageReader && postText ? "" : "disabled"}`}
+                  className={`${cl.buttonAddPost} ${htmlImageReader && postText ? "" : cl.buttonAddPostDisabled}`}
                   onClick={() => {
                     refAddPostWrapper.current.classList.add(cl.previewSlide);
                   }}

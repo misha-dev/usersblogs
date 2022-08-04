@@ -6,31 +6,33 @@ import { FaRegCommentAlt } from "react-icons/fa";
 import { colCommentsRef, db } from "../../firebase/config";
 import { CommentInterface } from "../../interfaces/CommentInterface";
 import PostInterface from "../../interfaces/PostInterface";
+import { useAppSelector } from "../../store/hooks";
 import { Comments } from "../Comments/Comments";
 import { CustomTextArea } from "../CustomTextArea/CustomTextArea";
 import cl from "./Post.module.scss";
 
 export const Post = ({ id, uid, userName, postPhotoURL, userPhotoURL, createdAt, text, likes, isPreview }: PostInterface) => {
   const [comments, loading, error] = useCollection(query(colCommentsRef, where("postId", "==", id)));
+  const { uid: uidCurrentUser, displayName, photoURL } = useAppSelector((state) => state.user.user);
   const [commentText, setCommentText] = useState("");
 
   const commentsRef = useRef<HTMLDivElement>(null!);
   const [liked, setLiked] = useState(false);
   useEffect(() => {
-    if (likes.includes(uid)) {
+    if (likes.includes(uidCurrentUser)) {
       setLiked(true);
     }
   }, []);
   const likePost = async (e: React.MouseEvent<SVGElement, MouseEvent>) => {
     const postDocRef = doc(db, "posts", id);
 
-    if (likes.includes(uid)) {
-      likes.splice(likes.indexOf(uid), 1);
+    if (likes.includes(uidCurrentUser)) {
+      likes.splice(likes.indexOf(uidCurrentUser), 1);
       updateDoc(postDocRef, {
         likes,
       });
     } else {
-      likes.push(uid);
+      likes.push(uidCurrentUser);
       updateDoc(postDocRef, {
         likes,
       });
@@ -41,6 +43,19 @@ export const Post = ({ id, uid, userName, postPhotoURL, userPhotoURL, createdAt,
   const showComments = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
     const commentsClassList = commentsRef.current.classList;
     commentsClassList.contains("hide") ? commentsClassList.remove("hide") : commentsClassList.add("hide");
+  };
+
+  const addComment = () => {
+    if (commentText.trim() !== "") {
+      addDoc(colCommentsRef, {
+        postId: id,
+        userName: displayName,
+        photoURL,
+        text: commentText,
+        createdAt: Timestamp.now(),
+      } as CommentInterface);
+      setCommentText("");
+    }
   };
   return (
     <div className={cl.postContentContainer}>
@@ -74,22 +89,10 @@ export const Post = ({ id, uid, userName, postPhotoURL, userPhotoURL, createdAt,
       <div className="hide" ref={commentsRef}>
         {comments && <Comments comments={comments} />}
         <div style={{ marginTop: "10px" }}>
-          <CustomTextArea text={commentText} setText={setCommentText} />
+          <CustomTextArea onEnter={addComment} text={commentText} setText={setCommentText} />
         </div>
         <div className={cl.buttonSendWrapper}>
-          <button
-            className={`${cl.buttonSend} ${commentText === "" ? "disabled" : ""}`}
-            onClick={() => {
-              addDoc(colCommentsRef, {
-                postId: id,
-                userName,
-                photoURL: userPhotoURL,
-                text: commentText,
-                createdAt: Timestamp.now(),
-              } as CommentInterface);
-              setCommentText("");
-            }}
-          >
+          <button className={`${cl.buttonSend} ${commentText.trim() === "" ? "disabled" : ""}`} onClick={addComment}>
             Send
           </button>
         </div>

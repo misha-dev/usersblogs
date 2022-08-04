@@ -4,13 +4,22 @@ import cl from "./CustomTextArea.module.scss";
 interface CustomTextAreaProps {
   text: string;
   setText: React.Dispatch<React.SetStateAction<string>>;
+  onEnter?: () => void;
 }
 
-export const CustomTextArea = ({ text, setText }: CustomTextAreaProps) => {
+export const CustomTextArea = ({ text, setText, onEnter }: CustomTextAreaProps) => {
   const refTextArea = useRef<HTMLTextAreaElement>(null!);
 
   return (
     <textarea
+      onKeyDown={(e) => {
+        if (e.key === "Enter" && text !== "".trim()) {
+          if (onEnter) {
+            e.preventDefault();
+            onEnter();
+          }
+        }
+      }}
       ref={refTextArea}
       onKeyUp={(e) => {
         refTextArea.current.style.height = "auto";

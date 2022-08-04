@@ -16,11 +16,10 @@ export const Comments = ({ comments }: CommentsProps) => {
         })
         .map((doc) => {
           const { userName, photoURL, createdAt, text, postId } = doc.data() as CommentInterface;
-          console.log(doc.id);
 
           return (
-            <div className={cl.commentsWrapper}>
-              <Comment key={doc.id} postId={postId} createdAt={createdAt} photoURL={photoURL} text={text} userName={userName} />
+            <div key={doc.id} className={cl.commentsWrapper}>
+              <Comment postId={postId} createdAt={createdAt} photoURL={photoURL} text={text} userName={userName} />
             </div>
           );
         })}
