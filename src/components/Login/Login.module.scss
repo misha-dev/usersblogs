@@ -33,4 +33,10 @@
       }
     }
   }
+
+  @media (max-width: 870px) {
+    .loginWrapper {
+      width: $loginWrapperWidthMobile;
+    }
+  }
 }
