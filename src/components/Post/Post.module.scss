@@ -1,68 +1,71 @@
 @import "../../styles/all";
-.postContentWrapper {
-  width: $postWidth;
-  background-color: white;
-  padding: 20px;
+
+.postContentContainer {
   margin-bottom: 10px;
+  .postContentWrapper {
+    width: $postWidth;
+    background-color: white;
+    padding: 20px;
 
-  &:last-child {
-    margin-bottom: 0px;
-  }
-  .postUserPhotoAndDisplayName {
-    display: flex;
-    align-items: center;
-    margin-bottom: 3px;
-
-    .userPhoto {
-      height: 28px;
-      width: 28px;
-      object-fit: contain;
-      border-radius: 50%;
-      margin-right: 8px;
+    &:last-child {
+      margin-bottom: 0px;
     }
-    .userDisplayName {
-      font-size: 1.15rem;
-    }
-  }
-
-  .postCreatedAt {
-    font-size: 0.85rem;
-    margin-bottom: 13px;
-  }
-
-  .postImg {
-    width: 100%;
-    height: $postImgHeight;
-    object-fit: contain;
-    margin-bottom: 5px;
-  }
-
-  .postText {
-    font-size: 1.1rem;
-    line-height: 1.3rem;
-    margin-bottom: 9px;
-  }
-
-  .postOptionsContent {
-    display: flex;
-    align-items: center;
-    color: $darkGreen;
-    .postOption {
+    .postUserPhotoAndDisplayName {
       display: flex;
       align-items: center;
+      margin-bottom: 3px;
 
-      &:not(:first-child) {
-        margin-left: 10px;
+      .userPhoto {
+        height: 28px;
+        width: 28px;
+        object-fit: contain;
+        border-radius: 50%;
+        margin-right: 8px;
       }
-      span {
-        margin-left: 5px;
+      .userDisplayName {
+        font-size: 1.15rem;
+      }
+    }
+
+    .postCreatedAt {
+      font-size: 0.85rem;
+      margin-bottom: 13px;
+    }
+
+    .postImg {
+      width: 100%;
+      height: $postImgHeight;
+      object-fit: contain;
+      margin-bottom: 5px;
+    }
+
+    .postText {
+      font-size: 1.1rem;
+      line-height: 1.3rem;
+      margin-bottom: 9px;
+    }
+
+    .postOptionsContent {
+      display: flex;
+      align-items: center;
+      color: $darkGreen;
+      .postOption {
+        display: flex;
+        align-items: center;
+
+        &:not(:first-child) {
+          margin-left: 12px;
+        }
+        span {
+          margin-left: 5px;
+        }
       }
     }
   }
-}
 
-@media (max-width: 870px) {
-  .postContentWrapper {
-    width: $postWidthMobile;
+  @media (max-width: 870px) {
+    .postContentWrapper {
+      width: $postWidthMobile;
+    }
   }
 }
