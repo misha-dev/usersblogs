@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import "../../styles/all";
 .postContentWrapper {
   width: $postWidth;
   background-color: white;
@@ -43,12 +43,17 @@
     margin-bottom: 9px;
   }
 
-  .postLikeContent {
+  .postOptionsContent {
     display: flex;
+    align-items: center;
     color: $darkGreen;
-    .postLike {
+    .postOption {
       display: flex;
       align-items: center;
+
+      &:not(:first-child) {
+        margin-left: 10px;
+      }
       span {
         margin-left: 5px;
       }

@@ -1,6 +1,7 @@
 import { doc, updateDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
+import { FaRegCommentAlt } from "react-icons/fa";
 import { db } from "../../firebase/config";
 import PostInterface from "../../interfaces/PostInterface";
 import { useAppSelector } from "../../store/hooks";
@@ -42,14 +43,19 @@ export const Post = ({ id, uid, userName, postPhotoURL, userPhotoURL, createdAt,
 
       <div className={cl.postText}>{text}</div>
 
-      <div className={cl.postLikeContent}>
-        <div className={cl.postLike}>
+      <div className={cl.postOptionsContent}>
+        <div className={cl.postOption}>
           {liked ? (
             <BsHeartFill onClick={isPreview ? () => {} : likePost} fontSize="1.25rem" cursor="pointer" />
           ) : (
             <BsHeart onClick={isPreview ? () => {} : likePost} fontSize="1.25rem" cursor="pointer" />
           )}
           <span>{likes.length} likes</span>
+        </div>
+        <div className={cl.postOption}>
+          <FaRegCommentAlt onClick={isPreview ? () => {} : likePost} fontSize="1.25rem" cursor="pointer" />
+
+          <span>{0} comments</span>
         </div>
       </div>
     </div>
