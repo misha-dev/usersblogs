@@ -49,7 +49,7 @@ export const Menu = () => {
                 src={photoURL}
                 onClick={() => {
                   const logoutClassList = logoutButtonRef.current.classList;
-                  logoutClassList.contains(cl.hideLogoutButton) ? logoutClassList.remove(cl.hideLogoutButton) : logoutClassList.add(cl.hideLogoutButton);
+                  logoutClassList.contains("hide") ? logoutClassList.remove("hide") : logoutClassList.add("hide");
                 }}
                 alt=""
               />
@@ -60,7 +60,7 @@ export const Menu = () => {
                     dispatch(logOut());
                   });
                 }}
-                className={`${cl.logout} ${cl.hideLogoutButton}`}
+                className={`${cl.logout} hide`}
               >
                 Logout
               </button>
