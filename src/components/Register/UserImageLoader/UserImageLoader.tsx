@@ -51,7 +51,7 @@ export const UserImageLoader: React.FC<props> = ({ refToWrapper, imageFile, setI
         >
           <MdOutlineKeyboardArrowLeft /> Back
         </div>
-        <button onClick={register} className={`${cl.register} ${htmlImageReader ? "" : cl.registerDisabled}`}>
+        <button onClick={register} className={`${cl.register} ${htmlImageReader ? "" : "disabled"}`}>
           Register
         </button>
       </div>

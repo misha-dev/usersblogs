@@ -58,7 +58,7 @@ export const Login = () => {
               <label htmlFor="password">Password</label>
             </div>
           </div>
-          <button className={cl.loginButton}>Login</button>
+          <button className={`${cl.loginButton} ${email && password ? "" : "disabled"}`}>Login</button>
         </div>
       </form>
     </div>

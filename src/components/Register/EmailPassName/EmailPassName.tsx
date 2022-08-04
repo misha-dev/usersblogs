@@ -63,7 +63,7 @@ export const EmailPassName = ({ refToWrapper, email, setEmail, password, setPass
       </div>
       <div className={cl.nextPageWrapper}>
         <div
-          className={`${cl.nextPage} ${email && password && displayName ? "" : cl.nexPageDisabled}`}
+          className={`${cl.nextPage} ${email && password && displayName ? "" : "disabled"}`}
           onClick={() => {
             refToWrapper.current?.classList.add(moveWrapper);
           }}

@@ -82,10 +82,6 @@
     }
   }
 
-  .buttonSendDisabled {
-    pointer-events: none;
-    opacity: 0.5;
-  }
   @media (max-width: 870px) {
     .postContentWrapper {
       width: $postWidthMobile;

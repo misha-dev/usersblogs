@@ -78,7 +78,7 @@ export const Post = ({ id, uid, userName, postPhotoURL, userPhotoURL, createdAt,
         </div>
         <div className={cl.buttonSendWrapper}>
           <button
-            className={`${cl.buttonSend} ${commentText === "" ? cl.buttonSendDisabled : ""}`}
+            className={`${cl.buttonSend} ${commentText === "" ? "disabled" : ""}`}
             onClick={() => {
               addDoc(colCommentsRef, {
                 postId: id,
