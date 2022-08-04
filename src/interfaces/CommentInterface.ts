@@ -1,7 +1,7 @@
 import { Timestamp } from "firebase/firestore";
 
 export interface CommentInterface {
-  uid: string;
+  postId: string;
   userName: string;
   photoURL: string;
   createdAt: Timestamp;

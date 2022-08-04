@@ -1,14 +1,16 @@
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, query, updateDoc, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import { useCollectionData } from "react-firebase-hooks/firestore";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { FaRegCommentAlt } from "react-icons/fa";
-import { db } from "../../firebase/config";
+import { colCommentsRef, db } from "../../firebase/config";
 import PostInterface from "../../interfaces/PostInterface";
 import { useAppSelector } from "../../store/hooks";
 import cl from "./Post.module.scss";
 
 export const Post = ({ id, uid, userName, postPhotoURL, userPhotoURL, createdAt, text, likes, isPreview }: PostInterface) => {
   const { uid: uidCurrentUser } = useAppSelector((state) => state.user.user);
+  const [comments, loading, error] = useCollectionData(query(colCommentsRef, where("postId", "==", id)));
   const [liked, setLiked] = useState(false);
   useEffect(() => {
     if (likes.includes(uidCurrentUser)) {
@@ -50,12 +52,12 @@ export const Post = ({ id, uid, userName, postPhotoURL, userPhotoURL, createdAt,
           ) : (
             <BsHeart onClick={isPreview ? () => {} : likePost} fontSize="1.25rem" cursor="pointer" />
           )}
-          <span>{likes.length} likes</span>
+          {likes.length === 1 ? <span>{likes.length} like</span> : <span>{likes.length} likes</span>}
         </div>
         <div className={cl.postOption}>
           <FaRegCommentAlt onClick={isPreview ? () => {} : likePost} fontSize="1.25rem" cursor="pointer" />
 
-          <span>{0} comments</span>
+          {comments?.length === 1 ? <span>{comments?.length} comment</span> : <span>{comments?.length} comments</span>}
         </div>
       </div>
     </div>

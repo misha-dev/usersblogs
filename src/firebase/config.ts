@@ -23,6 +23,7 @@ export const db = getFirestore();
 
 // collections
 export const colUsersRef = collection(db, "users");
-export const colPostsRef = collection(db, "posts")
+export const colPostsRef = collection(db, "posts");
+export const colCommentsRef = collection(db, "comments");
 
 export const storage = getStorage(app);

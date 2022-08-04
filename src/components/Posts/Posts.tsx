@@ -20,6 +20,7 @@ export const Posts = () => {
     } else if (selectedPosts === "my") {
       queryPosts = where("uid", "==", uid);
     } else {
+      // chooses the uid of user selected
       queryPosts = where("uid", "==", selectedPosts);
     }
   }
