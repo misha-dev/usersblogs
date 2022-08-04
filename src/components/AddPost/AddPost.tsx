@@ -15,9 +15,11 @@ export const AddPost = () => {
   const [imageFile, setImageFile] = useState<File>(null!);
   const [htmlImageReader, setHtmlImageReader] = useState<string>(null!);
   const [postText, setPostText] = useState("");
+  const [postButtonText, setPostButtonText] = useState("POST");
   const user = useAppSelector((state) => state.user.user);
   const refAddPostWrapper = useRef<HTMLDivElement>(null!);
   const photoURL = useRef<string>(null!);
+  const postButtonRef = useRef<HTMLButtonElement>(null!);
   const navigate = useNavigate();
 
   const uploadPostImgToStorage = async () => {
@@ -28,6 +30,8 @@ export const AddPost = () => {
   };
 
   const createPost = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    postButtonRef.current.classList.add("disabled");
+    setPostButtonText("Posting");
     setTimeout(() => {
       navigate("/usersblogs", { replace: true });
     }, 1000);
@@ -52,14 +56,14 @@ export const AddPost = () => {
 
               <CustomTextArea text={postText} setText={setPostText} />
               <div className={cl.buttonAddPostWrapper}>
-                <div
+                <button
                   className={`${cl.buttonAddPost} ${htmlImageReader ? "" : "disabled"}`}
                   onClick={() => {
                     refAddPostWrapper.current.classList.add(cl.previewSlide);
                   }}
                 >
                   Preview
-                </div>
+                </button>
               </div>
             </div>
           </div>
@@ -84,8 +88,8 @@ export const AddPost = () => {
               >
                 Back
               </div>
-              <button onClick={createPost} className={cl.buttonAddPost}>
-                POST
+              <button ref={postButtonRef} onClick={createPost} className={cl.buttonAddPost}>
+                {postButtonText}
               </button>
             </div>
           </div>
