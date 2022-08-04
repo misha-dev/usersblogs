@@ -45,6 +45,8 @@ export const Posts = () => {
             );
           })
       )}
+      {/* for margin of the last post */}
+      <div style={{ color: "transparent", fontSize: "1px" }}>k</div>
     </div>
   );
 };

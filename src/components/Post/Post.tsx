@@ -7,11 +7,14 @@ import { colCommentsRef, db } from "../../firebase/config";
 import PostInterface from "../../interfaces/PostInterface";
 import { useAppSelector } from "../../store/hooks";
 import { Comments } from "../Comments/Comments";
+import { CustomTextArea } from "../CustomTextArea/CustomTextArea";
 import cl from "./Post.module.scss";
 
 export const Post = ({ id, uid, userName, postPhotoURL, userPhotoURL, createdAt, text, likes, isPreview }: PostInterface) => {
   const { uid: uidCurrentUser } = useAppSelector((state) => state.user.user);
   const [comments, loading, error] = useCollectionData(query(colCommentsRef, where("postId", "==", id)));
+  const [commentText, setCommentText] = useState("");
+
   const commentsRef = useRef<HTMLDivElement>(null!);
   const [liked, setLiked] = useState(false);
   useEffect(() => {
@@ -71,6 +74,10 @@ export const Post = ({ id, uid, userName, postPhotoURL, userPhotoURL, createdAt,
       </div>
       <div className="hide" ref={commentsRef}>
         <Comments />
+        <CustomTextArea text={commentText} setText={setCommentText} />
+        <div className={cl.buttonSendWrapper}>
+          <button className={`${cl.buttonSend} ${commentText === "" ? cl.buttonSendDisabled : ""}`}>Send</button>
+        </div>
       </div>
     </div>
   );

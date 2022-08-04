@@ -63,6 +63,29 @@
     }
   }
 
+  .buttonSendWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .buttonSend {
+    border-radius: $borderRadiusDefault;
+    padding: 5px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: whitesmoke;
+    background-color: $darkGreen;
+    transition: all 0.2s linear;
+    &:hover {
+      color: white;
+      background-color: $lightGreen;
+    }
+  }
+
+  .buttonSendDisabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
   @media (max-width: 870px) {
     .postContentWrapper {
       width: $postWidthMobile;

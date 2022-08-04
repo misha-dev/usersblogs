@@ -1,3 +1,5 @@
+import cl from "./Comment.module.scss";
+
 export const Comment = () => {
-  return <div>Comment</div>;
+  return <div className={cl.commentWrapper}>Comment</div>;
 };
