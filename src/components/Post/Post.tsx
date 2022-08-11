@@ -7,6 +7,7 @@ import { colCommentsRef, db } from "../../firebase/config";
 import { CommentInterface } from "../../interfaces/CommentInterface";
 import PostInterface from "../../interfaces/PostInterface";
 import { useAppSelector } from "../../store/hooks";
+import { dateFormat } from "../../utils/dateFormat";
 import { Comments } from "../Comments/Comments";
 import { CustomTextArea } from "../CustomTextArea/CustomTextArea";
 import cl from "./Post.module.scss";
@@ -65,7 +66,7 @@ export const Post = ({ id, uid, userName, postPhotoURL, userPhotoURL, createdAt,
           <div className={cl.userDisplayName}>{userName}</div>
         </div>
 
-        <div className={cl.postCreatedAt}>Created at {createdAt.toDate().toLocaleString("en-AU").split(",")[0]}</div>
+        <div className={cl.postCreatedAt}>Created at {dateFormat.format(createdAt.toDate())}</div>
         <img src={postPhotoURL} className={cl.postImg} alt="" />
 
         <div className={cl.postText}>{text}</div>

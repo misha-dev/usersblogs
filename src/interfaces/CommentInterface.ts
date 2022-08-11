@@ -5,5 +5,5 @@ export interface CommentInterface {
   text: string;
   userName: string;
   photoURL: string;
-  createdAt?: Timestamp;
+  createdAt: Timestamp;
 }

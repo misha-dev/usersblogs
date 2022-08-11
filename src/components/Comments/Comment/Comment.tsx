@@ -1,4 +1,5 @@
 import { CommentInterface } from "../../../interfaces/CommentInterface";
+import { dateFormat } from "../../../utils/dateFormat";
 import cl from "./Comment.module.scss";
 
 export const Comment = ({ text, userName, photoURL, createdAt }: CommentInterface) => {
@@ -9,7 +10,7 @@ export const Comment = ({ text, userName, photoURL, createdAt }: CommentInterfac
           <img src={photoURL} alt="" />
           <div className={cl.userName}>{userName}</div>
         </div>
-        <div className={cl.commentCreatedAt}>{createdAt?.toDate().toLocaleString("en-AU").split(",")[0]}</div>
+        <div className={cl.commentCreatedAt}>{dateFormat.format(createdAt.toDate())}</div>
       </div>
       <div className={cl.commentText}>{text}</div>
     </div>
