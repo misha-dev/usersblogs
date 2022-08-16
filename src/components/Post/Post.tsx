@@ -1,5 +1,5 @@
 import { addDoc, doc, query, Timestamp, updateDoc, where } from "firebase/firestore";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { FaRegCommentAlt } from "react-icons/fa";
@@ -24,7 +24,7 @@ export const Post = ({ id, uid, userName, postPhotoURL, userPhotoURL, createdAt,
       setLiked(true);
     }
   }, []);
-  const likePost = async (e: React.MouseEvent<SVGElement, MouseEvent>) => {
+  const likePost = async (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const postDocRef = doc(db, "posts", id);
 
     if (likes.includes(uidCurrentUser)) {
@@ -41,7 +41,7 @@ export const Post = ({ id, uid, userName, postPhotoURL, userPhotoURL, createdAt,
     setLiked(!liked);
   };
 
-  const showComments = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
+  const showComments = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const commentsClassList = commentsRef.current.classList;
     commentsClassList.contains("hide") ? commentsClassList.remove("hide") : commentsClassList.add("hide");
   };
@@ -72,16 +72,12 @@ export const Post = ({ id, uid, userName, postPhotoURL, userPhotoURL, createdAt,
         <div className={cl.postText}>{text}</div>
 
         <div className={cl.postOptionsContent}>
-          <div className={cl.postOption}>
-            {liked ? (
-              <BsHeartFill onClick={isPreview ? () => {} : likePost} fontSize="1.25rem" cursor="pointer" />
-            ) : (
-              <BsHeart onClick={isPreview ? () => {} : likePost} fontSize="1.25rem" cursor="pointer" />
-            )}
+          <div className={cl.postOption} onClick={isPreview ? () => {} : likePost}>
+            {liked ? <BsHeartFill className={cl.iconPostOption} /> : <BsHeart className={cl.iconPostOption} />}
             {likes.length === 1 ? <span>{likes.length} like</span> : <span>{likes.length} likes</span>}
           </div>
-          <div className={cl.postOption}>
-            <FaRegCommentAlt onClick={isPreview ? () => {} : showComments} fontSize="1.25rem" cursor="pointer" />
+          <div className={cl.postOption} onClick={isPreview ? () => {} : showComments}>
+            <FaRegCommentAlt className={cl.iconPostOption} />
 
             {comments?.docs.length === 1 ? <span>{comments?.docs.length} comment</span> : <span>{comments?.docs.length} comments</span>}
           </div>

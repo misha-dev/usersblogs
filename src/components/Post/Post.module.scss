@@ -52,12 +52,17 @@
       .postOption {
         display: flex;
         align-items: center;
+        cursor: pointer;
 
         &:not(:first-child) {
           margin-left: 12px;
         }
         span {
           margin-left: 5px;
+        }
+
+        .iconPostOption {
+          font-size: 1.25rem;
         }
       }
     }
