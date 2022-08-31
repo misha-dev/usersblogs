@@ -1,5 +1,6 @@
 import { query, QueryConstraint, where } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
+import { animated, Transition } from "react-spring";
 import { colPostsRef } from "../../firebase/config";
 import PostInterface from "../../interfaces/PostInterface";
 import { LoaderHollowCircle } from "../../Loaders/LoaderHollowCircle/LoaderHollowCircle";
@@ -41,7 +42,32 @@ export const Posts = () => {
           .map((doc) => {
             const { uid, userName, userPhotoURL, createdAt, postPhotoURL, text, likes } = doc.data() as PostInterface;
             return (
-              <Post key={doc.id} id={doc.id} uid={uid} userName={userName} createdAt={createdAt} userPhotoURL={userPhotoURL} postPhotoURL={postPhotoURL} text={text} likes={likes} isPreview={false} />
+              <Transition
+                items={true}
+                from={{ opacity: 0.1, transform: "translateY(80vh)" }}
+                enter={{ opacity: 1, transform: "translateY(0)" }}
+                leave={{ opacity: 0, transform: "translateY(-80vh)" }}
+                config={{ mass: 1, tension: 160, friction: 21 }}
+              >
+                {(style, item) =>
+                  item && (
+                    <animated.div style={style}>
+                      <Post
+                        key={doc.id}
+                        id={doc.id}
+                        uid={uid}
+                        userName={userName}
+                        createdAt={createdAt}
+                        userPhotoURL={userPhotoURL}
+                        postPhotoURL={postPhotoURL}
+                        text={text}
+                        likes={likes}
+                        isPreview={false}
+                      />
+                    </animated.div>
+                  )
+                }
+              </Transition>
             );
           })
       )}
