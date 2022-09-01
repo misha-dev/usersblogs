@@ -26,6 +26,7 @@ export const Posts = () => {
     }
   }
   const [posts, loading, error] = useCollection(query(colPostsRef, queryPosts as QueryConstraint));
+  let timeOfDelay = -125;
 
   return (
     <div className={cl.contentWrapper}>
@@ -41,12 +42,14 @@ export const Posts = () => {
           })
           .map((doc) => {
             const { uid, userName, userPhotoURL, createdAt, postPhotoURL, text, likes } = doc.data() as PostInterface;
+            timeOfDelay += 125;
             return (
               <Transition
                 items={true}
                 from={{ opacity: 0.1, transform: "translateY(80vh)" }}
                 enter={{ opacity: 1, transform: "translateY(0)" }}
                 leave={{ opacity: 0, transform: "translateY(-80vh)" }}
+                delay={timeOfDelay}
                 config={{ mass: 1, tension: 160, friction: 21 }}
               >
                 {(style, item) =>
