@@ -45,6 +45,7 @@ export const Posts = () => {
             timeOfDelay += 125;
             return (
               <Transition
+                key={doc.id}
                 items={true}
                 from={{ opacity: 0.1, transform: "translateY(80vh)" }}
                 enter={{ opacity: 1, transform: "translateY(0)" }}
@@ -55,18 +56,7 @@ export const Posts = () => {
                 {(style, item) =>
                   item && (
                     <animated.div style={style}>
-                      <Post
-                        key={doc.id}
-                        id={doc.id}
-                        uid={uid}
-                        userName={userName}
-                        createdAt={createdAt}
-                        userPhotoURL={userPhotoURL}
-                        postPhotoURL={postPhotoURL}
-                        text={text}
-                        likes={likes}
-                        isPreview={false}
-                      />
+                      <Post id={doc.id} uid={uid} userName={userName} createdAt={createdAt} userPhotoURL={userPhotoURL} postPhotoURL={postPhotoURL} text={text} likes={likes} isPreview={false} />
                     </animated.div>
                   )
                 }
