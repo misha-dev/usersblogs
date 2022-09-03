@@ -13,7 +13,7 @@ export const CustomTextArea = ({ text, setText, onEnter }: CustomTextAreaProps) 
   return (
     <textarea
       onKeyDown={(e) => {
-        if (e.key === "Enter" && text !== "".trim()) {
+        if (e.key === "Enter" && text.trim() !== "") {
           if (onEnter) {
             e.preventDefault();
             onEnter();
