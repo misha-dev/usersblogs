@@ -13,7 +13,7 @@ export const Posts = () => {
   // for selecting every post
   let queryPosts = where("uid", "!=", -1);
 
-  if (selectedPosts && uid) {
+  if (selectedPosts) {
     if (selectedPosts === "all") {
       queryPosts = where("uid", "!=", -1);
     } else if (selectedPosts === "liked") {

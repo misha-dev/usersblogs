@@ -68,6 +68,21 @@
     }
   }
 
+  .commentRegister {
+    display: flex;
+    margin-left: 60px;
+    align-items: center;
+
+    span {
+      color: $darkGreen;
+      margin-right: 5px;
+      transition: all 0.2s ease;
+      &:hover {
+        color: $lightGreen;
+      }
+    }
+  }
+
   .buttonSendWrapper {
     display: flex;
     align-items: center;

@@ -35,17 +35,18 @@ function App() {
       {checkLogged ? (
         <Routes>
           <Route path="usersblogs" element={<Layout />}>
-            <Route index element={user ? <PostsWithSelect /> : <Authentication />} />
+            <Route index element={<PostsWithSelect />} />
             {user ? (
               <Route path="addpost" element={<AddPost />} />
             ) : (
               <>
+                <Route path="authentication" element={<Authentication />} />
                 <Route path="login" element={<Login />} />
                 <Route path="register" element={<Register />} />
               </>
             )}
-            <Route path="*" element={<Navigate to={"/usersblogs"} replace />} />
           </Route>
+          <Route path="*" element={<Navigate to={"/usersblogs"} replace />} />
         </Routes>
       ) : null}
     </div>

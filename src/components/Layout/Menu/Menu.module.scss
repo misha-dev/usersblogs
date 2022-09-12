@@ -15,7 +15,7 @@
 
   .wrapperActions {
     @extend %flexCenter;
-    .addPost {
+    .actionsButton {
       font-size: $menuButtonFontSize;
       padding: 5px 10px;
       background-color: $darkGreen;

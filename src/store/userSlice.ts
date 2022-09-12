@@ -16,7 +16,10 @@ type SelectedPosts = {
 };
 
 const initialState: UserState = {
-  user: {} as User,
+  user: {
+    // for an unauthorized user to view posts
+    selectedPosts: "all",
+  } as User,
 };
 
 const user = createSlice({

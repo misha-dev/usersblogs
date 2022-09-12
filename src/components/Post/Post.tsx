@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { FaRegCommentAlt } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 import { colCommentsRef, db } from "../../firebase/config";
 import { CommentInterface } from "../../interfaces/CommentInterface";
 import PostInterface from "../../interfaces/PostInterface";
@@ -16,6 +17,8 @@ export const Post = ({ id, uid, userName, postPhotoURL, userPhotoURL, createdAt,
   const [comments, loading, error] = useCollection(query(colCommentsRef, where("postId", "==", id)));
   const { uid: uidCurrentUser, displayName, photoURL } = useAppSelector((state) => state.user.user);
   const [commentText, setCommentText] = useState("");
+  const navigate = useNavigate();
+  const navigateToAuth = () => navigate("/usersblogs/authentication");
 
   const commentsRef = useRef<HTMLDivElement>(null!);
   const [liked, setLiked] = useState(false);
@@ -72,7 +75,7 @@ export const Post = ({ id, uid, userName, postPhotoURL, userPhotoURL, createdAt,
         <div className={cl.postText}>{text}</div>
 
         <div className={cl.postOptionsContent}>
-          <div className={cl.postOption} onClick={isPreview ? () => {} : likePost}>
+          <div className={cl.postOption} onClick={isPreview ? () => {} : uidCurrentUser ? likePost : navigateToAuth}>
             {liked ? <BsHeartFill className={cl.iconPostOption} /> : <BsHeart className={cl.iconPostOption} />}
             {likes.length === 1 ? <span>{likes.length} like</span> : <span>{likes.length} likes</span>}
           </div>
@@ -85,14 +88,25 @@ export const Post = ({ id, uid, userName, postPhotoURL, userPhotoURL, createdAt,
       </div>
       <div className="hide" ref={commentsRef}>
         {comments && <Comments comments={comments} />}
-        <div style={{ marginTop: "10px" }}>
-          <CustomTextArea onEnter={addComment} text={commentText} setText={setCommentText} />
-        </div>
-        <div className={cl.buttonSendWrapper}>
-          <button className={`${cl.buttonSend} ${commentText.trim() === "" ? "disabled" : ""}`} onClick={addComment}>
-            Send
-          </button>
-        </div>
+        {uidCurrentUser ? (
+          <>
+            <div style={{ marginTop: "10px" }}>
+              <CustomTextArea onEnter={addComment} text={commentText} setText={setCommentText} />
+            </div>
+            <div className={cl.buttonSendWrapper}>
+              <button className={`${cl.buttonSend} ${commentText.trim() === "" ? "disabled" : ""}`} onClick={addComment}>
+                Send
+              </button>
+            </div>
+          </>
+        ) : (
+          <div className={cl.commentRegister}>
+            <Link to={"/usersblogs/authentication"}>
+              <span>Register/Login</span>
+            </Link>
+            to send comments
+          </div>
+        )}
       </div>
     </div>
   );

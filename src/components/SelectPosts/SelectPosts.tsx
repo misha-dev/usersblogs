@@ -25,13 +25,14 @@ export const SelectPosts = () => {
     });
   }, []);
   const dispatch = useAppDispatch();
+
   return (
     <div className={cl.selectPostsWrapper}>
       <div ref={selectPostsRef} className={`${cl.selectPostsContent} ${cl.horizontalScroll}`}>
         {(loading || !selectPosts) && <p className={cl.loader}>Loading</p>}
         {data && (
           <>
-            <label>
+            <label className={uid ? "" : cl.lastOfBaseSelectors}>
               <input
                 checked={selectedPosts === "all"}
                 onChange={() => {
@@ -43,26 +44,30 @@ export const SelectPosts = () => {
               />
               <div className={cl.selectPostsItem}>All</div>
             </label>
-            <label>
-              <input
-                onChange={() => {
-                  dispatch(selectPosts({ selectedPosts: "my" }));
-                }}
-                type="radio"
-                name="selectPosts"
-              />
-              <div className={cl.selectPostsItem}>My</div>
-            </label>
-            <label className={cl.lastOfBaseSelectors}>
-              <input
-                onChange={() => {
-                  dispatch(selectPosts({ selectedPosts: "liked" }));
-                }}
-                type="radio"
-                name="selectPosts"
-              />
-              <div className={cl.selectPostsItem}>Liked</div>
-            </label>
+            {uid ? (
+              <>
+                <label>
+                  <input
+                    onChange={() => {
+                      dispatch(selectPosts({ selectedPosts: "my" }));
+                    }}
+                    type="radio"
+                    name="selectPosts"
+                  />
+                  <div className={cl.selectPostsItem}>My</div>
+                </label>
+                <label className={cl.lastOfBaseSelectors}>
+                  <input
+                    onChange={() => {
+                      dispatch(selectPosts({ selectedPosts: "liked" }));
+                    }}
+                    type="radio"
+                    name="selectPosts"
+                  />
+                  <div className={cl.selectPostsItem}>Liked</div>
+                </label>
+              </>
+            ) : null}
             {data.docs.map((doc) => {
               const { displayName, uid } = doc.data() as UserInterface;
               return (

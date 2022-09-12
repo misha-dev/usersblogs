@@ -9,7 +9,7 @@ import cl from "./Menu.module.scss";
 
 export const Menu = () => {
   const [user] = useAuthState(auth);
-  // for updating photoURL cause after register we update user with photoURL, but it that change doesn't rerender the component, so we should use here Redux Toolkit
+  // for updating photoURL cause after register we update user with photoURL, but that change doesn't rerender the component, so we should use here Redux Toolkit
   const photoURL = useAppSelector((state) => state.user.user.photoURL);
 
   const menuRef = useRef<HTMLDivElement>(null!);
@@ -38,35 +38,41 @@ export const Menu = () => {
         <Link to={"/usersblogs"}>
           <p>Users blogs</p>
         </Link>
-        {user ? (
-          <div className={cl.wrapperActions}>
-            <Link to={"/usersblogs/addpost"} className={cl.addPost}>
-              ADD POST
-            </Link>
+        <div className={cl.wrapperActions}>
+          {user ? (
+            <>
+              <Link to={"/usersblogs/addpost"} className={cl.actionsButton}>
+                ADD POST
+              </Link>
 
-            <div className={cl.user}>
-              <img
-                src={photoURL}
-                onClick={() => {
-                  const logoutClassList = logoutButtonRef.current.classList;
-                  logoutClassList.contains("hide") ? logoutClassList.remove("hide") : logoutClassList.add("hide");
-                }}
-                alt=""
-              />
-              <button
-                ref={logoutButtonRef}
-                onClick={() => {
-                  signOut(auth).then(() => {
-                    dispatch(logOut());
-                  });
-                }}
-                className={`${cl.logout} hide`}
-              >
-                Logout
-              </button>
-            </div>
-          </div>
-        ) : null}
+              <div className={cl.user}>
+                <img
+                  src={photoURL}
+                  onClick={() => {
+                    const logoutClassList = logoutButtonRef.current.classList;
+                    logoutClassList.contains("hide") ? logoutClassList.remove("hide") : logoutClassList.add("hide");
+                  }}
+                  alt=""
+                />
+                <button
+                  ref={logoutButtonRef}
+                  onClick={() => {
+                    signOut(auth).then(() => {
+                      dispatch(logOut());
+                    });
+                  }}
+                  className={`${cl.logout} hide`}
+                >
+                  Logout
+                </button>
+              </div>
+            </>
+          ) : (
+            <Link to={"/usersblogs/authentication"}>
+              <div className={cl.actionsButton}>Register/Login</div>
+            </Link>
+          )}
+        </div>
       </div>
     </nav>
   );
