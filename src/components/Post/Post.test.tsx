@@ -14,7 +14,7 @@ describe("Testing Post", () => {
     mockedSelector.mockReturnValue("test");
     mockedUseNavigate.mockImplementation(jest.fn());
   });
-  test("should Post renders", () => {
+  test("should Post render", () => {
     render(
       <BrowserRouter>
         <Post
@@ -33,6 +33,8 @@ describe("Testing Post", () => {
     );
 
     const post = screen.getByTestId("postContainer");
+    const username = screen.getByText(/Misha/i);
     expect(post).toBeInTheDocument();
+    expect(username).toBeInTheDocument();
   });
 });
