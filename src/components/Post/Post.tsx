@@ -15,7 +15,7 @@ import cl from "./Post.module.scss";
 
 export const Post = ({ id, uid, userName, postPhotoURL, userPhotoURL, createdAt, text, likes, isPreview }: PostInterface) => {
   const [comments, loading, error] = useCollection(query(colCommentsRef, where("postId", "==", id)));
-  const { uid: uidCurrentUser, displayName, photoURL } = useAppSelector((state) => state.user.user);
+  const { uid: uidCurrentUser, displayName, photoURL } = useAppSelector((state) => state.user);
   const [commentText, setCommentText] = useState("");
   const navigate = useNavigate();
   const navigateToAuth = () => navigate("/usersblogs/authentication");

@@ -9,7 +9,7 @@ import { Post } from "../Post/Post";
 import cl from "./Posts.module.scss";
 
 export const Posts = () => {
-  const { selectedPosts, uid } = useAppSelector((state) => state.user.user);
+  const { selectedPosts, uid } = useAppSelector((state) => state.user);
   // for selecting every post
   let queryPosts = where("uid", "!=", -1);
 

@@ -10,7 +10,7 @@ import cl from "./Menu.module.scss";
 export const Menu = () => {
   const [user] = useAuthState(auth);
   // for updating photoURL cause after register we update user with photoURL, but that change doesn't rerender the component, so we should use here Redux Toolkit
-  const photoURL = useAppSelector((state) => state.user.user.photoURL);
+  const photoURL = useAppSelector((state) => state.user.photoURL);
 
   const menuRef = useRef<HTMLDivElement>(null!);
   const logoutButtonRef = useRef<HTMLButtonElement>(null!);

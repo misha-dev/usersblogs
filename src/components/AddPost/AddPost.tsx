@@ -16,7 +16,7 @@ export const AddPost = () => {
   const [htmlImageReader, setHtmlImageReader] = useState<string>(null!);
   const [postText, setPostText] = useState("");
   const [postButtonText, setPostButtonText] = useState("POST");
-  const user = useAppSelector((state) => state.user.user);
+  const user = useAppSelector((state) => state.user);
   const refAddPostWrapper = useRef<HTMLDivElement>(null!);
   const photoURL = useRef<string>(null!);
   const postButtonRef = useRef<HTMLButtonElement>(null!);

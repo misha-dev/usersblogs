@@ -8,7 +8,7 @@ import { selectPosts } from "../../store/userSlice";
 import cl from "./SelectPosts.module.scss";
 
 export const SelectPosts = () => {
-  const { uid } = useAppSelector((state) => state.user.user);
+  const { uid, selectedPosts } = useAppSelector((state) => state.user);
   let querySelectPosts;
   if (uid) {
     querySelectPosts = where("uid", "!=", uid);
@@ -16,7 +16,6 @@ export const SelectPosts = () => {
     querySelectPosts = where("uid", "!=", -1);
   }
   const [data, loading] = useCollection(query(colUsersRef, querySelectPosts));
-  const { selectedPosts } = useAppSelector((state) => state.user.user);
   const selectPostsRef = useRef<HTMLDivElement>(null!);
   useEffect(() => {
     selectPostsRef.current.addEventListener("wheel", (e) => {
