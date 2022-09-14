@@ -62,7 +62,7 @@ export const Post = ({ id, uid, userName, postPhotoURL, userPhotoURL, createdAt,
     }
   };
   return (
-    <div className={cl.postContentContainer}>
+    <div data-testid="postContainer" className={cl.postContentContainer}>
       <div className={cl.postContentWrapper}>
         <div className={cl.postUserPhotoAndDisplayName}>
           <img src={userPhotoURL} className={cl.userPhoto} alt="" />
