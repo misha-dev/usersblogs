@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import * as ReduxHooks from "../../../store/hooks";
 // eslint-disable-next-line jest/no-mocks-import
-import { useAuthState } from "../../../__mocks__/react-firebase-hooks";
+import { useAuthState } from "../../../__mocks__/react-firebase-hooks/auth";
 import { Menu } from "./Menu";
 
 describe("Menu", () => {
@@ -12,7 +12,7 @@ describe("Menu", () => {
   beforeEach(() => {
     mockedSelector.mockReturnValue("test");
     mockedDispatch.mockImplementation(jest.fn());
-    useAuthState.mockReturnValue("test");
+    useAuthState.mockReturnValue([true, false]);
   });
   it("should render", () => {
     render(
@@ -22,6 +22,16 @@ describe("Menu", () => {
     );
     const menu = screen.getByRole("navigation");
     expect(menu).toBeInTheDocument();
+  });
+
+  it("should AddPost button render", () => {
+    render(
+      <BrowserRouter>
+        <Menu />
+      </BrowserRouter>
+    );
+    const buttonAddPost = screen.getByText(/add post/i);
+    expect(buttonAddPost).toBeInTheDocument();
   });
 
   afterEach(() => {
