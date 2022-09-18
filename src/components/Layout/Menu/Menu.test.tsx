@@ -1,5 +1,6 @@
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
 import * as ReduxHooks from "../../../store/hooks";
 // eslint-disable-next-line jest/no-mocks-import
@@ -12,7 +13,7 @@ describe("Menu", () => {
   beforeEach(() => {
     mockedSelector.mockReturnValue("test");
     mockedDispatch.mockImplementation(jest.fn());
-    useAuthState.mockReturnValue([true, false]);
+    useAuthState.mockReturnValue([true]);
   });
   it("should render", () => {
     render(
@@ -32,6 +33,20 @@ describe("Menu", () => {
     );
     const buttonAddPost = screen.getByText(/add post/i);
     expect(buttonAddPost).toBeInTheDocument();
+  });
+
+  it("should logout button render", () => {
+    render(
+      <BrowserRouter>
+        <Menu />
+      </BrowserRouter>
+    );
+
+    const logoutButton = screen.getByText(/Logout/i);
+    const userInterface = screen.getByRole("img");
+    expect(logoutButton.classList.contains("hide")).toBe(true);
+    userEvent.click(userInterface);
+    expect(logoutButton.classList.contains("hide")).toBe(false);
   });
 
   afterEach(() => {

@@ -11,6 +11,9 @@ export const Login = () => {
   return (
     <div className={cl.loginContentWrapper}>
       <form
+        // for jest testing
+        name="loginForm"
+        aria-label="loginForm"
         onSubmit={(e) => {
           e.preventDefault();
           signInWithEmailAndPassword(auth, email, password)
