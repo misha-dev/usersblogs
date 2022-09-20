@@ -49,6 +49,6 @@ describe("Menu", () => {
   });
 
   afterEach(() => {
-    jest.resetAllMocks();
+    jest.clearAllMocks();
   });
 });

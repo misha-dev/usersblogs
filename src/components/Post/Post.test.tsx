@@ -65,6 +65,6 @@ describe("Post", () => {
   });
 
   afterEach(() => {
-    jest.resetAllMocks();
+    jest.clearAllMocks();
   });
 });

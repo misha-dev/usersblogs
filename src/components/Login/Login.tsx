@@ -11,7 +11,7 @@ export const Login = () => {
   return (
     <div className={cl.loginContentWrapper}>
       <form
-        // for jest testing
+        // for search in jest test
         name="loginForm"
         aria-label="loginForm"
         onSubmit={(e) => {

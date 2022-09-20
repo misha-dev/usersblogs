@@ -6,11 +6,7 @@ describe("Authentication", () => {
   beforeAll(() => {});
 
   it("should render", () => {
-    render(
-      <BrowserRouter>
-        <Authentication />
-      </BrowserRouter>
-    );
+    render(<Authentication />, { wrapper: BrowserRouter });
     const loginButton = screen.getByText(/login/i);
     const registerButton = screen.getByText(/register/i);
     expect(loginButton).toBeInTheDocument();
@@ -18,6 +14,6 @@ describe("Authentication", () => {
   });
 
   afterAll(() => {
-    jest.resetAllMocks();
+    jest.clearAllMocks();
   });
 });

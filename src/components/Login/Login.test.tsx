@@ -13,7 +13,7 @@ describe("Login", () => {
     getAuth.mockReturnValue("test");
     signInWithEmailAndPassword.mockReturnValue(
       new Promise((resolve) => {
-        resolve("test");
+        resolve({ user: { uid: 1 } });
       })
     );
   });
@@ -60,6 +60,6 @@ describe("Login", () => {
   });
 
   afterEach(() => {
-    jest.resetAllMocks();
+    jest.clearAllMocks();
   });
 });
