@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
+
 import * as ReduxHooks from "../../store/hooks";
+
 import { AddPost } from "./AddPost";
 
 describe("AddPost", () => {

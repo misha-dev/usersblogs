@@ -1,10 +1,12 @@
 import { query, where } from "firebase/firestore";
 import { useEffect, useRef } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
+
 import { colUsersRef } from "../../firebase/config";
 import { UserInterface } from "../../interfaces/UserInterface";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { selectPosts } from "../../store/userSlice";
+
 import cl from "./SelectPosts.module.scss";
 
 export const SelectPosts = () => {

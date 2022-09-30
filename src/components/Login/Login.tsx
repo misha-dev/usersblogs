@@ -1,8 +1,10 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
+
 import { auth } from "../../firebase/config";
 import { useAppDispatch } from "../../store/hooks";
 import { setUser } from "../../store/userSlice";
+
 import cl from "./Login.module.scss";
 export const Login = () => {
   const [email, setEmail] = useState("");

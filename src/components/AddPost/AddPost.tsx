@@ -3,11 +3,13 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
+
 import { colPostsRef, storage } from "../../firebase/config";
 import PostInterface from "../../interfaces/PostInterface";
 import { useAppSelector } from "../../store/hooks";
 import { CustomTextArea } from "../CustomTextArea/CustomTextArea";
 import { Post } from "../Post/Post";
+
 import cl from "./AddPost.module.scss";
 import { PostImage } from "./PostImage/PostImage";
 

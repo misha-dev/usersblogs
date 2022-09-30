@@ -1,5 +1,7 @@
 import { DocumentData, QuerySnapshot } from "firebase/firestore";
+
 import { CommentInterface } from "../../interfaces/CommentInterface";
+
 import { Comment } from "./Comment/Comment";
 import cl from "./Comments.module.scss";
 

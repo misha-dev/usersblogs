@@ -3,9 +3,11 @@ import { addDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useRef, useState } from "react";
 import { v4 } from "uuid";
+
 import { auth, colUsersRef, storage } from "../../firebase/config";
 import { useAppDispatch } from "../../store/hooks";
 import { setUser } from "../../store/userSlice";
+
 import { EmailPassName } from "./EmailPassName/EmailPassName";
 import cl from "./Register.module.scss";
 import { UserImageLoader } from "./UserImageLoader/UserImageLoader";

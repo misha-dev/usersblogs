@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { MdAddPhotoAlternate } from "react-icons/md";
+
 import cl from "./PostImage.module.scss";
 
 interface props {

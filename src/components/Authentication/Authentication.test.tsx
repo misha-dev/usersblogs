@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { createMemoryHistory } from "history";
 import { BrowserRouter, Router } from "react-router-dom";
+
 import { Authentication } from "./Authentication";
 
 describe("Authentication", () => {
@@ -20,7 +21,7 @@ describe("Authentication", () => {
     render(
       <Router location={history.location} navigator={history}>
         <Authentication />
-      </Router>
+      </Router>,
     );
     const loginButton = screen.getByText(/login/i);
     userEvent.click(loginButton);
@@ -31,7 +32,7 @@ describe("Authentication", () => {
     render(
       <Router location={history.location} navigator={history}>
         <Authentication />
-      </Router>
+      </Router>,
     );
     const loginButton = screen.getByText(/register/i);
     userEvent.click(loginButton);

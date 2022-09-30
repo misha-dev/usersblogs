@@ -2,7 +2,9 @@ import { render, screen } from "@testing-library/react";
 import { Timestamp } from "firebase/firestore";
 import * as router from "react-router";
 import { BrowserRouter } from "react-router-dom";
+
 import * as ReduxHooks from "../../store/hooks";
+
 import { Post } from "./Post";
 
 describe("Post", () => {
@@ -27,7 +29,7 @@ describe("Post", () => {
           userName="Misha"
           userPhotoURL="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/User_icon-cp.svg/1200px-User_icon-cp.svg.png"
         />
-      </BrowserRouter>
+      </BrowserRouter>,
     );
 
     const post = screen.getByTestId("postContainer");
@@ -52,7 +54,7 @@ describe("Post", () => {
           userName="Misha"
           userPhotoURL="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/User_icon-cp.svg/1200px-User_icon-cp.svg.png"
         />
-      </BrowserRouter>
+      </BrowserRouter>,
     );
 
     const username = screen.getByText(/Misha/i);

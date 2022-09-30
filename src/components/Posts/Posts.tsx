@@ -1,11 +1,13 @@
 import { query, QueryConstraint, where } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { animated, Transition } from "react-spring";
+
 import { colPostsRef } from "../../firebase/config";
 import PostInterface from "../../interfaces/PostInterface";
 import { LoaderHollowCircle } from "../../Loaders/LoaderHollowCircle/LoaderHollowCircle";
 import { useAppSelector } from "../../store/hooks";
 import { Post } from "../Post/Post";
+
 import cl from "./Posts.module.scss";
 
 export const Posts = () => {

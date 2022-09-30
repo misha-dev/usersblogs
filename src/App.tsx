@@ -2,6 +2,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Navigate, Route, Routes } from "react-router-dom";
+
 import "./App.scss";
 import { AddPost } from "./components/AddPost/AddPost";
 import { Authentication } from "./components/Authentication/Authentication";

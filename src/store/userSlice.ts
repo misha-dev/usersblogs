@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
 import { UserInterface } from "../interfaces/UserInterface";
 
 type SelectedPosts = {

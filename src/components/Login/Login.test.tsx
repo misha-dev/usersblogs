@@ -1,9 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+
 import * as ReduxHooks from "../../store/hooks";
 
 // eslint-disable-next-line jest/no-mocks-import
 import { getAuth, signInWithEmailAndPassword } from "../../__mocks__/firebase/auth";
+
 import { Login } from "./Login";
 
 describe("Login", () => {
@@ -14,7 +16,7 @@ describe("Login", () => {
     signInWithEmailAndPassword.mockReturnValue(
       new Promise((resolve) => {
         resolve({ user: { uid: 1 } });
-      })
+      }),
     );
   });
   it("should render", () => {

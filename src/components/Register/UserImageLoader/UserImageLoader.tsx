@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { MdOutlineKeyboardArrowLeft, MdPhotoCamera } from "react-icons/md";
+
 import cl from "./UserImageLoader.module.scss";
 
 type props = {

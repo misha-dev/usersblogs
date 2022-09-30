@@ -1,9 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
+
 import * as ReduxHooks from "../../../store/hooks";
 // eslint-disable-next-line jest/no-mocks-import
 import { useAuthState } from "../../../__mocks__/react-firebase-hooks/auth";
+
 import { Menu } from "./Menu";
 
 describe("Menu", () => {
@@ -18,7 +20,7 @@ describe("Menu", () => {
     render(
       <BrowserRouter>
         <Menu />
-      </BrowserRouter>
+      </BrowserRouter>,
     );
     const menu = screen.getByRole("navigation");
     expect(menu).toBeInTheDocument();
@@ -28,7 +30,7 @@ describe("Menu", () => {
     render(
       <BrowserRouter>
         <Menu />
-      </BrowserRouter>
+      </BrowserRouter>,
     );
     const buttonAddPost = screen.getByText(/add post/i);
     expect(buttonAddPost).toBeInTheDocument();
@@ -38,7 +40,7 @@ describe("Menu", () => {
     render(
       <BrowserRouter>
         <Menu />
-      </BrowserRouter>
+      </BrowserRouter>,
     );
 
     const logoutButton = screen.getByText(/Logout/i);

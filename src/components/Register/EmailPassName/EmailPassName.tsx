@@ -1,4 +1,5 @@
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+
 import cl from "./EmailPassName.module.scss";
 
 type props = {

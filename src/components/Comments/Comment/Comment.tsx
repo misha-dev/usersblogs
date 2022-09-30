@@ -1,5 +1,6 @@
 import { CommentInterface } from "../../../interfaces/CommentInterface";
 import { dateFormat } from "../../../utils/dateFormat";
+
 import cl from "./Comment.module.scss";
 
 export const Comment = ({ text, userName, photoURL, createdAt }: CommentInterface) => {

@@ -2,9 +2,11 @@ import { signOut } from "firebase/auth";
 import { useEffect, useRef } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+
 import { auth } from "../../../firebase/config";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { logOut } from "../../../store/userSlice";
+
 import cl from "./Menu.module.scss";
 
 export const Menu = () => {

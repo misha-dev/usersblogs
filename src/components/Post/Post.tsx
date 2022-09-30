@@ -4,6 +4,7 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { FaRegCommentAlt } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+
 import { colCommentsRef, db } from "../../firebase/config";
 import { CommentInterface } from "../../interfaces/CommentInterface";
 import PostInterface from "../../interfaces/PostInterface";
@@ -11,6 +12,7 @@ import { useAppSelector } from "../../store/hooks";
 import { dateFormat } from "../../utils/dateFormat";
 import { Comments } from "../Comments/Comments";
 import { CustomTextArea } from "../CustomTextArea/CustomTextArea";
+
 import cl from "./Post.module.scss";
 
 export const Post = ({ id, uid, userName, postPhotoURL, userPhotoURL, createdAt, text, likes, isPreview }: PostInterface) => {
