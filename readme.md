@@ -1,6 +1,6 @@
-# Calculator project :computer:
+# Users blogs project :computer:
 
-## Web page: [Users blog:link:](https://misha-dev.github.io/usersblogs/)
+## Web page: [Users blogs:link:](https://misha-dev.github.io/usersblogs/)
 
 ## About the project
 
@@ -51,7 +51,7 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## Contact:telephone_receiver:
+## Contact :telephone_receiver:
 
 Michael - [@misha_dev](https://t.me/misha_dev) - shabatinmichael@gmail.com
 
