@@ -34,9 +34,15 @@ This project implements social network where anyone can view, post, comment and 
    npm test
    ```
 
-## Usage
+## Technologies
 
-You can see, like, comment others posts or make your own!
+- React (TypeScript)
+- Firebase (Firestore, Storage)
+- React Router (v6)
+- SCSS modules
+- Redux Toolkit (TypeScript)
+- Jest
+- React Spring
 
 ## Contributing:star2:
 
