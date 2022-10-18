@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 
@@ -15,23 +15,30 @@ export const Menu = () => {
   const photoURL = useAppSelector((state) => state.user.photoURL);
 
   const menuRef = useRef<HTMLDivElement>(null!);
-  const logoutButtonRef = useRef<HTMLButtonElement>(null!);
-
-  const onScrollColorMenu = (e: Event) => {
-    const scrolled = window.scrollY;
-    if (scrolled !== 0) {
-      menuRef.current.classList.add(cl.coloredMenu);
-    } else {
-      menuRef.current.classList.remove(cl.coloredMenu);
-    }
-  };
+  const [logoutButtonShow, setLogoutButtonShow] = useState(false);
 
   useEffect(() => {
+    const onScrollColorMenu = (e: Event) => {
+      const scrolled = window.scrollY;
+      if (scrolled !== 0) {
+        menuRef.current.classList.add(cl.coloredMenu);
+      } else {
+        menuRef.current.classList.remove(cl.coloredMenu);
+      }
+    };
+
+    const hideLogoutButton = (e: MouseEvent) => {
+      if (logoutButtonShow) {
+        setLogoutButtonShow(false);
+      }
+    };
     window.addEventListener("scroll", onScrollColorMenu);
+    window.addEventListener("click", hideLogoutButton);
     return () => {
       window.removeEventListener("scroll", onScrollColorMenu);
+      window.removeEventListener("click", hideLogoutButton);
     };
-  }, []);
+  }, [logoutButtonShow]);
 
   const dispatch = useAppDispatch();
   return (
@@ -50,20 +57,19 @@ export const Menu = () => {
               <div className={cl.user}>
                 <img
                   src={photoURL}
-                  onClick={() => {
-                    const logoutClassList = logoutButtonRef.current.classList;
-                    logoutClassList.contains("hide") ? logoutClassList.remove("hide") : logoutClassList.add("hide");
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLogoutButtonShow(!logoutButtonShow);
                   }}
                   alt=""
                 />
                 <button
-                  ref={logoutButtonRef}
-                  onClick={() => {
+                  onClick={(e) => {
                     signOut(auth).then(() => {
                       dispatch(logOut());
                     });
                   }}
-                  className={`${cl.logout} hide`}
+                  className={`${cl.logout} ${logoutButtonShow ? "" : "hide"}`}
                 >
                   Logout
                 </button>
