@@ -37,6 +37,8 @@
     line-height: 1.05rem;
     font-size: 1.03rem;
     margin-left: 15px;
+    text-overflow: ellipsis;  
+    overflow: hidden;
   }
 }
 
