@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { v4 } from "uuid";
 
 import { auth, colUsersRef, storage } from "../../firebase/config";
+import { useFormInput } from "../../hooks/useFormInput";
 import { useAppDispatch } from "../../store/hooks";
 import { setUser } from "../../store/userSlice";
 
@@ -14,7 +15,7 @@ import { UserImageLoader } from "./UserImageLoader/UserImageLoader";
 
 export const Register = () => {
   const registerWrapper = useRef<HTMLDivElement | null>(null);
-  const [email, setEmail] = useState("");
+  const email = useFormInput("", { minLength: 5 }, "text");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [imageFile, setImageFile] = useState<File>(null!);
@@ -36,7 +37,7 @@ export const Register = () => {
 
   const registerUser = async () => {
     try {
-      const userCred = await createUserWithEmailAndPassword(auth, email, password);
+      const userCred = await createUserWithEmailAndPassword(auth, email.value, password);
       await uploadUserImgToStorage();
 
       await updateProfile(auth.currentUser!, {
@@ -47,7 +48,7 @@ export const Register = () => {
 
       await addDoc(colUsersRef, { uid, email, displayName, photoURL: photoURL.current } as User);
 
-      dispatch(setUser({ uid, displayName, email, photoURL: photoURL.current }));
+      dispatch(setUser({ uid, displayName, email: email.value, photoURL: photoURL.current }));
     } catch (error) {
       alert("Enter valid data!");
     }
@@ -60,10 +61,11 @@ export const Register = () => {
           <div className={cl.registrationBox}>
             <EmailPassName
               refToWrapper={registerWrapper}
-              email={email}
+              email={email.value}
+              onEmailChange={email.onChange}
+              onBlurEmail={email.onBlur}
               password={password}
               displayName={displayName}
-              setEmail={setEmail}
               setPassword={setPassword}
               setDisplayName={setDisplayName}
               moveWrapper={cl.registerWrapperMoveForward}
