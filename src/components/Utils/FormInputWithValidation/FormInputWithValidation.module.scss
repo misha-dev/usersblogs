@@ -1,0 +1,19 @@
+.inputWrapperValidation {
+  position: relative;
+  .registerFormError {
+    font-size: 0.95rem;
+    position: absolute;
+    color: red;
+    user-select: none;
+    left: 10px;
+    top: 105%;
+  }
+}
+
+@media (max-width: 1180px) {
+  .inputWrapperValidation {
+    .registerFormError {
+      font-size: 0.8rem;
+    }
+  }
+}

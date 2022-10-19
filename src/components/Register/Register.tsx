@@ -15,7 +15,7 @@ import { UserImageLoader } from "./UserImageLoader/UserImageLoader";
 
 export const Register = () => {
   const registerWrapper = useRef<HTMLDivElement | null>(null);
-  const email = useFormInput("", { minLength: 5 }, "text");
+  const email = useFormInput("", { email: true }, "text");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [imageFile, setImageFile] = useState<File>(null!);
@@ -61,9 +61,7 @@ export const Register = () => {
           <div className={cl.registrationBox}>
             <EmailPassName
               refToWrapper={registerWrapper}
-              email={email.value}
-              onEmailChange={email.onChange}
-              onBlurEmail={email.onBlur}
+              email={email}
               password={password}
               displayName={displayName}
               setPassword={setPassword}

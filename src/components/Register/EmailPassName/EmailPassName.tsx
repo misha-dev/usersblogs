@@ -1,14 +1,14 @@
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
-import { FormInput } from "../../Utils/FormInput/FormInput";
+import { useFormType } from "../../../interfaces/InputTypes.types";
+
+import { FormInputWithValidation } from "../../Utils/FormInputWithValidation/FormInputWithValidation";
 
 import cl from "./EmailPassName.module.scss";
 
 type props = {
   refToWrapper: React.RefObject<HTMLDivElement>;
-  email: string;
-  onEmailChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onBlurEmail: (e: React.FocusEvent<HTMLInputElement, Element>) => void;
+  email: useFormType;
   password: string;
   setPassword: React.Dispatch<React.SetStateAction<string>>;
   displayName: string;
@@ -16,11 +16,11 @@ type props = {
   moveWrapper: string;
 };
 
-export const EmailPassName = ({ refToWrapper, email, onEmailChange: emailOnChange, onBlurEmail, password, setPassword, displayName, setDisplayName, moveWrapper }: props) => {
+export const EmailPassName = ({ refToWrapper, email, password, setPassword, displayName, setDisplayName, moveWrapper }: props) => {
   return (
     <>
       <div className={cl.registrationEmailPassNameWrapper}>
-        <FormInput id="email" name="email" onChange={emailOnChange} placeholder="email" type="email" value={email} onBlur={onBlurEmail} />
+        <FormInputWithValidation id="email" name="email" placeholder="email" handler={email} type="text" />
 
         <div className="inputWrapper">
           <input
