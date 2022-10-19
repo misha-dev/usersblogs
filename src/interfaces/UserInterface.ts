@@ -1,7 +1,10 @@
-export interface UserInterface {
+export type UserBaseType = {
   uid: string;
   displayName: string;
-  email: string;
   photoURL: string;
+};
+
+export type UserInterface = {
+  email: string;
   selectedPosts?: string;
-}
+} & UserBaseType;

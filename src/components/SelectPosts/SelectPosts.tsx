@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 
 import { colUsersRef } from "../../firebase/config";
-import { UserInterface } from "../../interfaces/UserInterface";
+import { UserBaseType } from "../../interfaces/UserInterface";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { selectPosts } from "../../store/userSlice";
 
@@ -70,7 +70,7 @@ export const SelectPosts = () => {
               </>
             ) : null}
             {data.docs.map((doc) => {
-              const { displayName, uid } = doc.data() as UserInterface;
+              const { displayName, uid } = doc.data() as UserBaseType;
               return (
                 <label key={doc.id}>
                   <input

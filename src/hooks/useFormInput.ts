@@ -23,7 +23,7 @@ export const useValidation = (value: string, validations: validationsType) => {
   return { error };
 };
 
-export const useFormInput = (initialValue: string, validations: validationsType, type: "text" | "password" | "displayName") => {
+export const useFormInput = (initialValue: string, validations: validationsType, type: "text" | "password") => {
   const [value, setValue] = useState(initialValue);
   const [dirty, setDirty] = useState(false);
   const valid = useValidation(value, validations);

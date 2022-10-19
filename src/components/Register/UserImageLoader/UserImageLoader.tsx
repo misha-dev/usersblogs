@@ -5,13 +5,13 @@ import cl from "./UserImageLoader.module.scss";
 
 type props = {
   refToWrapper: React.RefObject<HTMLDivElement>;
-  imageFile: File;
   setImageFile: React.Dispatch<React.SetStateAction<File>>;
   register: () => void;
+  validUserData: boolean;
   moveWrapper: string;
 };
 
-export const UserImageLoader: React.FC<props> = ({ refToWrapper, imageFile, setImageFile, register, moveWrapper }) => {
+export const UserImageLoader: React.FC<props> = ({ refToWrapper, setImageFile, register, moveWrapper, validUserData }) => {
   // null! is for using after current without ? sign
   const refToUserImg = useRef<HTMLInputElement>(null!);
   const [htmlImageReader, setHtmlImageReader] = useState<string | null>(null);
@@ -52,7 +52,7 @@ export const UserImageLoader: React.FC<props> = ({ refToWrapper, imageFile, setI
         >
           <MdOutlineKeyboardArrowLeft /> Back
         </div>
-        <button onClick={register} className={`${cl.register} ${htmlImageReader ? "" : "disabled"}`}>
+        <button onClick={register} className={`${cl.register} ${htmlImageReader && validUserData ? "" : "disabled"}`}>
           Register
         </button>
       </div>

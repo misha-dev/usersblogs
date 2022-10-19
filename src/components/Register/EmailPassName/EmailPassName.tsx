@@ -9,52 +9,23 @@ import cl from "./EmailPassName.module.scss";
 type props = {
   refToWrapper: React.RefObject<HTMLDivElement>;
   email: useFormType;
-  password: string;
-  setPassword: React.Dispatch<React.SetStateAction<string>>;
-  displayName: string;
-  setDisplayName: React.Dispatch<React.SetStateAction<string>>;
+  password: useFormType;
+  displayName: useFormType;
   moveWrapper: string;
+  validUserData: boolean;
 };
 
-export const EmailPassName = ({ refToWrapper, email, password, setPassword, displayName, setDisplayName, moveWrapper }: props) => {
+export const EmailPassName = ({ refToWrapper, email, password, displayName, moveWrapper, validUserData }: props) => {
   return (
     <>
       <div className={cl.registrationEmailPassNameWrapper}>
-        <FormInputWithValidation id="email" name="email" placeholder="email" handler={email} type="text" />
-
-        <div className="inputWrapper">
-          <input
-            onChange={(e) => {
-              setPassword(e.currentTarget.value);
-            }}
-            value={password}
-            autoCorrect="false"
-            autoComplete="false"
-            id="password"
-            required
-            type="password"
-          />
-          <label htmlFor="password">Password</label>
-        </div>
-
-        <div className="inputWrapper">
-          <input
-            onChange={(e) => {
-              setDisplayName(e.currentTarget.value);
-            }}
-            value={displayName}
-            autoCorrect="false"
-            autoComplete="false"
-            id="displayName"
-            required
-            type="text"
-          />
-          <label htmlFor="displayName">Display Name</label>
-        </div>
+        <FormInputWithValidation id="email" name="email" placeholder="Email" handler={email} type="text" />
+        <FormInputWithValidation id="password" name="password" placeholder="Password" handler={password} type="password" />
+        <FormInputWithValidation id="displayName" name="displayName" placeholder="Display Name" handler={displayName} type="text" />
       </div>
       <div className={cl.nextPageWrapper}>
         <div
-          className={`${cl.nextPage} ${email && password && displayName ? "" : "disabled"}`}
+          className={`${cl.nextPage} ${validUserData ? "" : "disabled"}`}
           onClick={() => {
             refToWrapper.current?.classList.add(moveWrapper);
           }}
