@@ -17,7 +17,7 @@ import { UserImageLoader } from "./UserImageLoader/UserImageLoader";
 export const Register = () => {
   const registerWrapper = useRef<HTMLDivElement | null>(null);
   const email = useFormInput("", { email: true }, "text");
-  const password = useFormInput("", { minLength: 5 }, "password");
+  const password = useFormInput("", { minLength: 6 }, "password");
   const displayName = useFormInput("", { minLength: 5 }, "text");
 
   const [imageFile, setImageFile] = useState<File>(null!);
@@ -35,7 +35,7 @@ export const Register = () => {
 
   const registerUser = async () => {
     try {
-      const userCred = await createUserWithEmailAndPassword(auth, email.value, password.value);
+      const userCred = await createUserWithEmailAndPassword(auth, email.value.toLowerCase(), password.value);
       await uploadUserImgToStorage();
 
       await updateProfile(auth.currentUser!, {
@@ -46,7 +46,7 @@ export const Register = () => {
 
       await addDoc(colUsersRef, { uid, email: email.value, displayName: displayName.value, photoURL: photoURL.current } as UserBaseType);
 
-      dispatch(setUser({ uid, displayName: displayName.value, email: email.value, photoURL: photoURL.current }));
+      dispatch(setUser({ uid, displayName: displayName.value, email: email.value.toLowerCase(), photoURL: photoURL.current }));
     } catch (error) {
       alert("Enter valid data!");
     }
