@@ -23,6 +23,7 @@ export const Register = () => {
   const [imageFile, setImageFile] = useState<File>(null!);
   const photoURL = useRef("");
   const dispatch = useAppDispatch();
+  const [errorRegister, setErrorRegister] = useState("");
 
   const validUserData = !(Boolean(email.valid.error) || Boolean(password.valid.error) || Boolean(displayName.valid.error));
 
@@ -48,7 +49,11 @@ export const Register = () => {
 
       dispatch(setUser({ uid, displayName: displayName.value, email: email.value.toLowerCase(), photoURL: photoURL.current }));
     } catch (error) {
-      alert("Enter valid data!");
+      registerWrapper.current?.classList.remove(cl.registerWrapperMoveForward);
+      setErrorRegister("Email is taken!");
+      setTimeout(() => {
+        setErrorRegister("");
+      }, 1500);
     }
   };
 
@@ -57,6 +62,7 @@ export const Register = () => {
       <div className={cl.registerContent}>
         <div ref={registerWrapper} className={cl.registerWrapper}>
           <div className={cl.registrationBox}>
+            {errorRegister ? <div className={cl.errorRegister}>{errorRegister}</div> : null}
             <EmailPassName validUserData={validUserData} refToWrapper={registerWrapper} email={email} password={password} displayName={displayName} moveWrapper={cl.registerWrapperMoveForward} />
           </div>
           <div className={cl.registrationBox}>
