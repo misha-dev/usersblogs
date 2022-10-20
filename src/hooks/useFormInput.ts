@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import { useFormType } from "../interfaces/InputTypes.types";
+
 type validationsType = { [key: string]: number | boolean | RegExp };
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 export const useValidation = (value: string, validations: validationsType) => {
@@ -26,7 +28,7 @@ export const useValidation = (value: string, validations: validationsType) => {
   return { error };
 };
 
-export const useFormInput = (initialValue: string, validations: validationsType, type: "text" | "password") => {
+export const useFormInput = (initialValue: string, validations: validationsType, type: "text" | "password"): useFormType => {
   const [value, setValue] = useState(initialValue);
   const [dirty, setDirty] = useState(false);
   const valid = useValidation(value, validations);
@@ -44,5 +46,5 @@ export const useFormInput = (initialValue: string, validations: validationsType,
     }
   };
 
-  return { value, dirty, valid, onBlur, onChange };
+  return { value, dirty, valid, onBlur, onChange, setValue };
 };

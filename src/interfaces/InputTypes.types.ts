@@ -3,6 +3,11 @@ type baseParams = {
   name: string;
 };
 
+type HandlerState<T> = {
+  value: T;
+  setValue: React.Dispatch<React.SetStateAction<T>>;
+};
+
 export type InputType = {
   placeholder: string;
   type: "password" | "text";
@@ -10,11 +15,10 @@ export type InputType = {
 } & baseParams;
 
 export type useFormType = {
-  value: string;
   dirty: boolean;
   valid: {
     error: string;
   };
   onBlur: (e: React.FocusEvent<HTMLInputElement, Element>) => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
+} & HandlerState<string>;

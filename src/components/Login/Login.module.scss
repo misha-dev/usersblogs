@@ -5,6 +5,7 @@
 
   .loginWrapper {
     @extend %flexCenter;
+    position: relative;
     flex-direction: column;
     width: $loginWrapperWidth;
     height: $loginWrapperHeight;
@@ -31,6 +32,17 @@
       &:hover {
         background-color: $lightGreen;
       }
+    }
+
+    .errorLogin {
+      position: absolute;
+      font-weight: 600;
+      font-size: 1.1rem;
+      top: 12%;
+      left: 50%;
+      user-select: none;
+      transform: translateX(-50%);
+      color: red;
     }
   }
 

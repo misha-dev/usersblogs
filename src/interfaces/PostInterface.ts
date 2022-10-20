@@ -10,4 +10,4 @@ export default interface PostInterface {
   likes: Array<string>;
   createdAt: Timestamp;
   isPreview: boolean;
-};;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+};
