@@ -7,6 +7,9 @@ export const useValidation = (value: string, validations: validationsType) => {
   useEffect(() => {
     for (const validation in validations) {
       switch (validation) {
+      case "notEmpty":
+        value.length ? setError("") : setError("Required");
+        break;
       case "minLength":
         value.length < validations[validation] ? setError(`Should be at least ${validations[validation]} letters!`) : setError("");
         break;

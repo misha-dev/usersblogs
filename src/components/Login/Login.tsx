@@ -1,15 +1,17 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
 
 import { auth } from "../../firebase/config";
+import { useFormInput } from "../../hooks/useFormInput";
 import { useAppDispatch } from "../../store/hooks";
 import { setUser } from "../../store/userSlice";
+import { FormInputWithValidation } from "../Utils/FormInputWithValidation/FormInputWithValidation";
 
 import cl from "./Login.module.scss";
 export const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const email = useFormInput("", { email: true }, "text");
+  const password = useFormInput("", { notEmpty: true }, "password");
   const dispatch = useAppDispatch();
+  const validUserData = !(Boolean(email.valid.error) || Boolean(password.valid.error));
   return (
     <div className={cl.loginContentWrapper}>
       <form
@@ -18,7 +20,7 @@ export const Login = () => {
         aria-label="loginForm"
         onSubmit={(e) => {
           e.preventDefault();
-          signInWithEmailAndPassword(auth, email, password)
+          signInWithEmailAndPassword(auth, email.value, password.value)
             .then((userCredential) => {
               const { uid, email, displayName, photoURL } = userCredential.user;
               if (displayName && email && photoURL) {
@@ -27,43 +29,16 @@ export const Login = () => {
             })
             .catch((error) => {
               alert("Invalid password or email");
-              setPassword("");
             });
         }}
         action="#"
       >
         <div className={cl.loginWrapper}>
           <div className={cl.loginInputs}>
-            <div className="inputWrapper">
-              <input
-                onChange={(e) => {
-                  setEmail(e.currentTarget.value);
-                }}
-                value={email}
-                autoCorrect="false"
-                autoComplete="false"
-                id="email"
-                required
-                type="text"
-              />
-              <label htmlFor="email">Email</label>
-            </div>
-            <div className="inputWrapper">
-              <input
-                onChange={(e) => {
-                  setPassword(e.currentTarget.value);
-                }}
-                value={password}
-                autoCorrect="false"
-                autoComplete="false"
-                id="password"
-                required
-                type="password"
-              />
-              <label htmlFor="password">Password</label>
-            </div>
+            <FormInputWithValidation handler={email} id={"email"} name={"email"} placeholder={"Email"} type={"text"} />
+            <FormInputWithValidation handler={password} id={"password"} name={"password"} placeholder={"Password"} type={"password"} />
           </div>
-          <button className={`${cl.loginButton} ${email && password ? "" : "disabled"}`}>Login</button>
+          <button className={`${cl.loginButton} ${validUserData ? "" : "disabled"}`}>Login</button>
         </div>
       </form>
     </div>
