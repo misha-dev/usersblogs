@@ -28,9 +28,7 @@ export const Menu = () => {
     };
 
     const hideLogoutButton = (e: MouseEvent) => {
-      if (logoutButtonShow) {
-        setLogoutButtonShow(false);
-      }
+      setLogoutButtonShow(false);
     };
     window.addEventListener("scroll", onScrollColorMenu);
     window.addEventListener("click", hideLogoutButton);
@@ -38,7 +36,7 @@ export const Menu = () => {
       window.removeEventListener("scroll", onScrollColorMenu);
       window.removeEventListener("click", hideLogoutButton);
     };
-  }, [logoutButtonShow]);
+  }, []);
 
   const dispatch = useAppDispatch();
   return (
