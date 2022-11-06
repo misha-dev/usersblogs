@@ -1,44 +1,48 @@
 @import "../../../styles/all";
 
 .commentWrapper {
+  display: flex;
+  margin-bottom: 8px;
+  padding: 10px;
   width: calc($postWidth - 50px);
   min-height: 40px;
-  margin-bottom: 8px;
   background-color: white;
-  padding: 10px;
-  display: flex;
 
   .commentInfo {
     display: flex;
     flex-direction: column;
+
     .commentUserInfo {
-      @extend %flexCenter;
       margin-bottom: 4px;
+
       img {
+        border-radius: 50%;
         width: 20px;
         height: 20px;
-        border-radius: 50%;
       }
+
+      @extend %flexCenter;
     }
 
     .userName {
-      font-size: 0.9rem;
       margin-left: 5px;
+      font-size: 0.9rem;
     }
   }
 
   .commentCreatedAt {
     font-size: 0.7rem;
+
     // padding-left: 5px;
   }
 
   .commentText {
-    line-height: 1.05rem;
-    font-size: 1.03rem;
-    margin-left: 15px;
     align-self: center;
-    text-overflow: ellipsis;
     overflow: hidden;
+    margin-left: 15px;
+    font-size: 1.03rem;
+    line-height: 1.05rem;
+    text-overflow: ellipsis;
   }
 }
 

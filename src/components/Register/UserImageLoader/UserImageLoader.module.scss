@@ -1,20 +1,19 @@
 @import "../../../styles/all";
 
 .userImgContent {
-  color: $darkGreen;
-
   // for positioning actionWrapper elements at the same height as slide before (5px padding of button)
   height: calc(100% - 9px);
+  color: $darkGreen;
 
   .header {
-    font-size: $bigFontSize;
     margin-bottom: 120px;
+    font-size: $bigFontSize;
   }
 
   label {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
   }
 
   .imageWrapper {
@@ -22,23 +21,24 @@
     border-radius: 50%;
 
     .userImage {
-      height: 130px;
-      width: 130px;
       border-radius: 50%;
+      width: 130px;
+      height: 130px;
       cursor: pointer;
     }
 
     .photoSign {
       position: absolute;
-      @extend %flexCenter;
+      left: 70%;
+      top: 75%;
+      border-radius: 50%;
       width: 25px;
       height: 25px;
-      background-color: $darkGreen;
-      border-radius: 50%;
-      top: 75%;
-      left: 70%;
       color: white;
+      background-color: $darkGreen;
       cursor: pointer;
+
+      @extend %flexCenter;
     }
   }
 
@@ -48,17 +48,16 @@
 }
 
 .actionWrapper {
-  @extend %flexCenter;
   justify-content: space-between;
 
   .back {
-    color: $darkGreen;
     display: flex;
     align-items: center;
-    cursor: pointer;
-    font-weight: 700;
-    transition: color 0.2s ease-in-out;
     margin-right: -10px;
+    font-weight: 700;
+    color: $darkGreen;
+    transition: color 0.2s ease-in-out;
+    cursor: pointer;
 
     &:hover {
       color: $lightGreen;
@@ -66,20 +65,23 @@
   }
 
   .register {
-    cursor: pointer;
-    font-weight: 700;
-    padding: 7px;
-    background-color: $darkGreen;
-    font-size: $defaultFontSize;
-    border-radius: 30px;
-    color: white;
     border: 2px solid transparent;
+    border-radius: 30px;
+    padding: 7px;
+    font-weight: 700;
+    font-size: $defaultFontSize;
     letter-spacing: 0.05rem;
+    color: white;
+    background-color: $darkGreen;
     transition: color 0.2s ease-in-out, border 0.2s ease-in-out, background-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    cursor: pointer;
+
     &:hover {
+      border-color: $darkGreen;
       color: $lightGreen;
       background-color: white;
-      border-color: $darkGreen;
     }
   }
+
+  @extend %flexCenter;
 }

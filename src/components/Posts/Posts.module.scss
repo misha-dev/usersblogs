@@ -1,14 +1,17 @@
 @import "../../styles/all";
+
 .contentWrapper {
-  height: calc(100% - 42px - 17px - 20px);
-  @extend %flexCenter;
-  justify-content: flex-start;
   flex-direction: column;
+  justify-content: flex-start;
+  height: calc(100% - 42px - 17px - 20px);
 
   .noPosts {
     height: 100%;
-    @extend %flexCenter;
     font-size: $bigFontSize;
     color: $darkGreen;
+
+    @extend %flexCenter;
   }
+
+  @extend %flexCenter;
 }

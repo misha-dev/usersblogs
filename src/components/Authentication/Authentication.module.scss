@@ -1,36 +1,53 @@
 @import "../../styles/all";
 
 .authContent {
-  @extend %flexCenter;
   height: 100%;
 
   .auth_register_login_wrapper {
-    @extend %flexCenter;
     position: relative;
     justify-content: space-around;
     border-radius: 10px;
     padding: 20px;
     background-color: white;
+
     &::after {
-      position: absolute;
       content: "";
-      height: 250px;
-      width: 0.2px;
-      background-color: $darkGreen;
-      top: 50%;
-      transform: translateY(-50%);
+      position: absolute;
       left: 49.9%;
+      top: 50%;
+      width: 0.2px;
+      height: 250px;
+      background-color: $darkGreen;
+      transform: translateY(-50%);
     }
+
     .auth_login,
     .auth_register {
-      @extend %flexCenter;
-      cursor: pointer;
+      border-radius: 10px;
       width: 400px;
       height: 280px;
       font-size: $bigFontSize;
       transition: all 0.2s linear;
-      border-radius: 10px;
+      cursor: pointer;
+
+      @extend %flexCenter;
     }
+
+    .auth_login {
+      &:hover {
+        box-shadow: 0 0 7px inset $darkGreen;
+        color: $lightGreen;
+      }
+    }
+
+    .auth_register {
+      &:hover {
+        box-shadow: 0 0 7px inset $lightGreen;
+        color: $darkGreen;
+      }
+    }
+
+    @extend %flexCenter;
 
     @media (max-width: 870px) {
       .auth_login,
@@ -38,18 +55,7 @@
         width: 150px;
       }
     }
-
-    .auth_login {
-      &:hover {
-        box-shadow: 0px 0px 7px inset $darkGreen;
-        color: $lightGreen;
-      }
-    }
-    .auth_register {
-      &:hover {
-        box-shadow: 0px 0px 7px inset $lightGreen;
-        color: $darkGreen;
-      }
-    }
   }
+
+  @extend %flexCenter;
 }

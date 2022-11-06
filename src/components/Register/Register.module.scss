@@ -1,42 +1,44 @@
 @import "../../styles/all";
 
 .registerContentWrapper {
-  @extend %flexCenter;
   height: 100%;
+
   .registerContent {
-    width: $registerBoxWidth;
     overflow: hidden;
+    width: $registerBoxWidth;
 
     .registerWrapper {
+      display: flex;
+      border-right: 1px solid green;
+      border-left: 1px solid green;
       border-radius: $borderRadiusDefault;
       width: $registerWrapperWidth;
       height: $registerWrapperHeight;
-      display: flex;
       background-color: white;
-      border-left: 1px solid green;
-      border-right: 1px solid green;
       transition: all 0.3s ease-in-out;
 
       .registrationBox {
         position: relative;
         border-radius: $borderRadiusDefault;
-        height: 100%;
-        width: $registerBoxWidth;
         padding: 50px;
+        width: $registerBoxWidth;
+        height: 100%;
 
         .errorRegister {
           position: absolute;
+          left: 50%;
+          top: 10%;
           font-weight: 600;
           font-size: 1.1rem;
-          top: 10%;
-          left: 50%;
-          user-select: none;
-          transform: translateX(-50%);
           color: red;
+          transform: translateX(-50%);
+          user-select: none;
         }
       }
     }
   }
+
+  @extend %flexCenter;
 }
 
 .registerWrapperMoveForward {

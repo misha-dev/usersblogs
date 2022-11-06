@@ -2,20 +2,22 @@
 
 .postImgContent {
   display: block;
+  margin-bottom: 10px;
   width: 100%;
   height: $postImgHeight;
   cursor: pointer;
-  margin-bottom: 10px;
+
   .postImgSample {
-    @extend %flexCenter;
     flex-direction: column;
     height: 100%;
-    background-color: $darkGreen;
     color: $lightGreen;
+    background-color: $darkGreen;
 
     .postImgSampleText {
       font-weight: 600;
     }
+
+    @extend %flexCenter;
   }
 
   img {

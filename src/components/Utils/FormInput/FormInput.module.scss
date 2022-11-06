@@ -3,18 +3,19 @@
 .inputWrapper {
   position: relative;
   width: 100%;
+
   label {
-    display: block;
     position: absolute;
-    font-weight: 700;
-    color: $darkGreen;
     left: 10px;
     top: 50%;
-    transform: translateY(-50%);
-    cursor: text;
-    transition: top 0.2s ease, font-size 0.2s ease, top 0.2s ease;
+    display: block;
     padding: 0 5px;
+    font-weight: 700;
+    color: $darkGreen;
     background-color: white;
+    transform: translateY(-50%);
+    transition: top 0.2s ease, font-size 0.2s ease, top 0.2s ease;
+    cursor: text;
     user-select: none;
   }
 
@@ -22,20 +23,20 @@
     border: 2px solid $darkGreen;
     border-radius: 10px;
     padding: 12px;
+    width: 100%;
     font-size: 1.1rem;
     color: $lightGreen;
-    width: 100%;
 
     &[type="password"] {
-      font-family: Verdana;
+      font-family: "Verdana";
     }
   }
 
   input:valid + label,
   input:focus + label {
-    top: 0px;
-    font-size: 0.8rem;
+    top: 0;
     border-color: $lightGreen;
+    font-size: 0.8rem;
     background-color: white;
   }
 }

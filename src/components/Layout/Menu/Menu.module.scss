@@ -1,70 +1,74 @@
 @import "../../../styles/all";
 
 .menu {
-  transition: background-color 0.2s ease;
-  @extend %flexCenter;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
   justify-content: space-around;
   padding: 20px;
-  font-size: $menuFontSize;
   font-weight: 700;
+  font-size: $menuFontSize;
   background-color: white;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
+  transition: background-color 0.2s ease;
 
   .wrapperActions {
-    @extend %flexCenter;
     .actionsButton {
-      font-size: $menuButtonFontSize;
-      padding: 5px 10px;
-      background-color: $darkGreen;
-      color: white;
-      border-radius: 3px;
       margin-right: 8px;
       border: 2px solid transparent;
+      border-radius: 3px;
+      padding: 5px 10px;
       font-weight: 550;
-
+      font-size: $menuButtonFontSize;
+      color: white;
+      background-color: $darkGreen;
       transition: color 0.2s ease-in-out, border 0.2s ease-in-out, background-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+
       &:hover {
+        border-color: $darkGreen;
         color: $lightGreen;
         background-color: white;
-        border-color: $darkGreen;
       }
     }
 
     .user {
-      width: $userIconSize;
-      height: $userIconSize;
       position: relative;
       margin-left: 7px;
       border-radius: 50%;
+      width: $userIconSize;
+      height: $userIconSize;
+
       img {
-        height: 100%;
-        cursor: pointer;
-        object-fit: cover;
         border-radius: 50%;
+        height: 100%;
+        object-fit: cover;
+        cursor: pointer;
       }
 
       .logout {
         position: absolute;
-        top: 200%;
         left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: $menuButtonFontSize;
-        padding: 5px 8px 7px 8px;
-        font-weight: 600;
-        border-radius: 3px;
+        top: 200%;
         border: 2px solid $darkGreen;
+        border-radius: 3px;
+        padding: 5px 8px 7px;
+        font-weight: 600;
+        font-size: $menuButtonFontSize;
         color: $darkGreen;
         background-color: whitesmoke;
+        transform: translate(-50%, -50%);
         transition: border-color 0.2s linear;
+
         &:hover {
           border-color: $lightGreen;
         }
       }
     }
+
+    @extend %flexCenter;
   }
+
+  @extend %flexCenter;
 }
 
 .coloredMenu {
@@ -77,12 +81,12 @@
     }
 
     100% {
-      top: 0px;
+      top: 0;
     }
   }
 }
 
 .navStyling {
-  height: 73.59px;
   margin-bottom: 20px;
+  height: 73.59px;
 }

@@ -1,16 +1,15 @@
 @import "../../styles/all";
 
 .selectPostsWrapper {
-  @extend %flexCenter;
   margin-bottom: 20px;
+
   .selectPostsContent {
-    @extend %flexCenter;
     justify-content: flex-start;
-    width: $postWidth;
-    padding: 7px 10px;
     border-radius: 35px;
-    background-color: white;
+    padding: 7px 10px;
+    width: $postWidth;
     min-height: 42px;
+    background-color: white;
 
     .loader {
       width: 100%;
@@ -19,51 +18,58 @@
 
     input[type="radio"] {
       display: none;
+
       &:checked + .selectPostsItem {
         border: 1px solid transparent;
-        background-color: $darkGreen;
         color: white;
+        background-color: $darkGreen;
       }
     }
 
     label {
-      scroll-snap-align: start;
       margin-right: 7px;
-      &:last-child {
-        margin-right: 0px;
-      }
+      scroll-snap-align: start;
 
       .selectPostsItem {
-        padding: 5px 8px;
-        border: 2px solid;
-        background-color: white;
         border: 1px solid $lightGreen;
-        cursor: pointer;
         border-radius: 35px;
+        padding: 5px 8px;
+        background-color: white;
         transition: all 0.2s ease-in-out;
+        cursor: pointer;
         user-select: none;
+
         &:hover {
           border: 1px solid $lightGreen;
-          background-color: $darkGreen;
           color: white;
+          background-color: $darkGreen;
         }
+      }
+
+      &:last-child {
+        margin-right: 0;
       }
     }
 
     .lastOfBaseSelectors {
       position: relative;
       margin-right: 15px;
+
       &::after {
         content: "";
-        background-color: $lightGreen;
         position: absolute;
-        top: 0px;
         left: 111%;
-        height: 28px;
+        top: 0;
         width: 1px;
+        height: 28px;
+        background-color: $lightGreen;
       }
     }
+
+    @extend %flexCenter;
   }
+
+  @extend %flexCenter;
 
   @media (max-width: 870px) {
     .selectPostsContent {
@@ -74,22 +80,24 @@
 
 .horizontalScroll {
   overflow-x: auto;
-  overscroll-behavior-inline: contain;
   scroll-snap-type: inline mandatory;
+  overscroll-behavior-inline: contain;
   scroll-padding-inline: 10px;
 
   &::-webkit-scrollbar {
     height: 5px;
   }
+
   &::-webkit-scrollbar-track {
     background-color: transparent;
     margin-inline: 13px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $lightGreen;
     border-radius: 35px;
+    background-color: $lightGreen;
   }
+
   &::-webkit-scrollbar-thumb:active {
     background-color: $darkGreen;
   }

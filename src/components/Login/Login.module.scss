@@ -1,32 +1,32 @@
 @import "../../styles/all";
+
 .loginContentWrapper {
-  @extend %flexCenter;
   height: 100%;
 
   .loginWrapper {
-    @extend %flexCenter;
     position: relative;
     flex-direction: column;
+    border-radius: $borderRadiusDefault;
     width: $loginWrapperWidth;
     height: $loginWrapperHeight;
     background-color: white;
-    border-radius: $borderRadiusDefault;
 
     .loginInputs {
-      @extend %flexCenter;
       flex-direction: column;
-      height: 60%;
       justify-content: space-around;
+      height: 60%;
+
+      @extend %flexCenter;
     }
 
     .loginButton {
+      border-radius: $borderRadiusDefault;
       padding: 10px 15px;
       font-weight: 700;
       font-size: 1.2rem;
-      background-color: $darkGreen;
-      color: white;
       text-align: center;
-      border-radius: $borderRadiusDefault;
+      color: white;
+      background-color: $darkGreen;
       transition: background-color 0.2s ease-in-out;
 
       &:hover {
@@ -36,15 +36,19 @@
 
     .errorLogin {
       position: absolute;
+      left: 50%;
+      top: 12%;
       font-weight: 600;
       font-size: 1.1rem;
-      top: 12%;
-      left: 50%;
-      user-select: none;
-      transform: translateX(-50%);
       color: red;
+      transform: translateX(-50%);
+      user-select: none;
     }
+
+    @extend %flexCenter;
   }
+
+  @extend %flexCenter;
 
   @media (max-width: 870px) {
     .loginWrapper {

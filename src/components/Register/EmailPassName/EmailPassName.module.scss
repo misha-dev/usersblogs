@@ -2,29 +2,28 @@
 
 .registrationEmailPassNameWrapper {
   display: flex;
-  height: 100%;
   flex-direction: column;
   justify-content: space-around;
   border-radius: $borderRadiusDefault;
-
-  
+  height: 100%;
 }
 
 .nextPageWrapper {
-  color: $darkGreen;
-  @extend %flexCenter;
   justify-content: end;
-  transition: color 0.2s ease-in-out;
   margin-right: -10px;
+  color: $darkGreen;
   transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+
+  .nextPage {
+    font-weight: 700;
+    cursor: pointer;
+
+    @extend %flexCenter;
+  }
 
   &:hover {
     color: $lightGreen;
   }
 
-  .nextPage {
-    @extend %flexCenter;
-    cursor: pointer;
-    font-weight: 700;
-  }
+  @extend %flexCenter;
 }
