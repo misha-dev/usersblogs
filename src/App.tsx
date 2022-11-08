@@ -11,6 +11,7 @@ import { Login } from "./components/Login/Login";
 import { PostsWithSelect } from "./components/PostsWithSelect/PostsWithSelect";
 import { Register } from "./components/Register/Register";
 import { auth } from "./firebase/config";
+import { LoaderHollowCircle } from "./Loaders/LoaderHollowCircle/LoaderHollowCircle";
 import { useAppDispatch } from "./store/hooks";
 import { setUser } from "./store/userSlice";
 
@@ -49,7 +50,11 @@ function App() {
           </Route>
           <Route path="*" element={<Navigate to={"/usersblogs"} replace />} />
         </Routes>
-      ) : null}
+      ) : (
+        <div style={{ height: "100vh" }}>
+          <LoaderHollowCircle />
+        </div>
+      )}
     </div>
   );
 }
